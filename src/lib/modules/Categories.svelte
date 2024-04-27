@@ -13,7 +13,7 @@
 	{#each $categories as category (category.id)}
 		<!--Движки-->
 		{#if category.id === 1}
-			<div class="category-col h-40-vh pos-r grid-column: 1/{$isMobile ? 1 : 3}">
+			<div class="category-col h-40-vh pos-r" style="grid-column: 1/{$isMobile ? 1 : 3}">
 				<a
 					href="category{category.href}"
 					class="d-block w-100 h-100 rounded-3"
@@ -23,7 +23,10 @@
 			</div>
 			<!--Комплектные подстанции-->
 		{:else if category.id === 9}
-			<div class="category-col h-40-vh pos-r center center/cover; grid-column: 2/{$isMobile ? '2' : '3'}">
+			<div
+				class="category-col h-40-vh pos-r center center/cover;"
+				style="grid-column: 2/{$isMobile ? '2' : '3'}"
+			>
 				<a
 					href="category{category.href}"
 					class="d-block w-100 h-100 rounded-3"

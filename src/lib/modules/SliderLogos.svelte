@@ -1,0 +1,23 @@
+<script>
+	import SliderLoop from '$lib/components/SliderLoop.svelte';
+	import { globals } from '$lib/globals';
+
+	const imgPath = globals.imagePath + 'logo/',
+		images = [
+			{ id: 1, path: imgPath + 'Evraz 1.svg' },
+			{ id: 2, path: imgPath + 'Gazprom-Logo-rus 1.svg' },
+			{ id: 3, path: imgPath + 'nornickel-logo 7.svg' },
+			{ id: 4, path: imgPath + 'Rosneft_Logo 1.svg' },
+			{ id: 5, path: imgPath + 'Sibur_Holding_Logo 1.svg' },
+			{ id: 6, path: imgPath + 'SUEK_Logo 1.svg' },
+		];
+</script>
+
+<div class="w-100 h-40-vh bg-clr-white-beige d-flex flex-column justify-content-center">
+	<h4 class="fs-headline-lg flex-0-3 ms-5 mt-2 mb-0">Нам доверяют более 199 клиентов</h4>
+	<SliderLoop
+		{images}
+		slideClasses="{['bg-clr-white-light', 'w-100', 'h-100', 'p-3', 'rounded-3']}"
+		sliderWrapperClasses="{['flex-0-3']}"
+	/>
+</div>

@@ -3,7 +3,6 @@
 	import Form from '$lib/components/Form.svelte';
 	import { globals } from '$lib/globals';
 	import { alert } from '$lib/utils/alert';
-	globals;
 
 	let _alert = { ...alert },
 		submitTimeout = _alert.timeout;

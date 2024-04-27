@@ -20,9 +20,7 @@
 <header>
 	<nav class="navbar w-100 h-15-vh align-items-center fs-body-lg clr-white-soft bg-clr-green-dark fw-light">
 		<ul
-			class="list w-95 h-100 mx-auto d-flex flex-column-gap-2 align-items-center {listOffsetWidth < 750
-				? 'flex-column'
-				: ''}"
+			class="list w-95 h-100 mx-auto d-flex flex-column-gap-2 align-items-center"
 			bind:offsetWidth="{listOffsetWidth}"
 		>
 			<li><img src="{globals.imagePath}logo/esq.svg" alt="esq_logo" /></li>

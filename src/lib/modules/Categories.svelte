@@ -13,25 +13,21 @@
 	{#each $categories as category (category.id)}
 		<!--Движки-->
 		{#if category.id === 1}
-			<div class="category-col h-40-vh pos-r">
+			<div class="category-col h-40-vh pos-r grid-column: 1/{$isMobile ? 1 : 3}">
 				<a
 					href="category{category.href}"
 					class="d-block w-100 h-100 rounded-3"
-					style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover; grid-column: 1/{$isMobile
-						? 1
-						: 3}"
+					style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover;"
 					><span class="clr-white fs-headline-md d-block pt-3 ps-3">{category.name}</span></a
 				>
 			</div>
 			<!--Комплектные подстанции-->
 		{:else if category.id === 9}
-			<div class="category-col h-40-vh pos-r">
+			<div class="category-col h-40-vh pos-r center center/cover; grid-column: 2/{$isMobile ? '2' : '3'}">
 				<a
 					href="category{category.href}"
 					class="d-block w-100 h-100 rounded-3"
-					style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover; grid-column: 2/{$isMobile
-						? '1/1'
-						: '2/4'}"
+					style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image})"
 					><span class="clr-white fs-headline-md d-block pt-3 ps-3">{category.name}</span></a
 				>
 			</div>

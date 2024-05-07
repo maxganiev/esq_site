@@ -1,71 +1,71 @@
 @use './vars.scss';
 
 * {
-	&::before,
-	&::after {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		font-weight: 400;
-	}
+  &::before,
+  &::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+  }
 }
 
 ul {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 a {
-	text-decoration: none !important;
-	color: inherit !important;
+  text-decoration: none !important;
+  color: inherit !important;
 
-	&:hover {
-		opacity: 0.6;
-		transition: opacity 0.4s ease;
-	}
+  &:hover {
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+  }
 }
 
 body {
-	font-family: 'Manrope', sans-serif !important;
+  font-family: 'Manrope', sans-serif !important;
 
-	main {
-		overflow-x: hidden;
-	}
+  main {
+    overflow-x: hidden;
+  }
 }
 
 .object-fit-contain {
-	object-fit: contain;
+  object-fit: contain;
 }
 
 .icon-base {
-	object-fit: contain;
-	width: 20px;
+  object-fit: contain;
+  width: 20px;
 }
 
 .no-scrollbars {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 
-	&::-webkit-scrollbar {
-		display: none;
-	}
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .logo {
-	width: 20px;
-	object-fit: contain;
+  width: 20px;
+  object-fit: contain;
 }
 
 .hover-item > li:hover,
 .active-item {
-	position: relative;
+  position: relative;
 
-	&::after {
-		position: absolute;
-		content: '';
-		width: 100%;
-		left: 0%;
-		height: 1.5px;
-		top: 120%;
-		background-color: #00d1f2;
-	}
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0%;
+    height: 1.5px;
+    top: 125%;
+    background-color: #00d1f2;
+  }
 }

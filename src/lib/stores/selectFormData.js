@@ -1,42 +1,49 @@
-import { readable } from 'svelte/store';
+import { readable, get, writable, derived } from 'svelte/store';
 import citiesJson from '$lib/russian-cities.json';
 import { addDays, format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
 export const cities = readable(citiesJson),
-	daysToCallback = readable([''], (set) => {
-		/**@type {String[]}*/
-		let days = [];
+  daysToCallback = readable([], (set) => {
+    /**@type {Object & {valueISO: Date | String, value: String} []}*/
+    let days = [];
 
-		for (let d = 0; d < 5; d++) {
-			let nextDay = addDays(Date.now(), d),
-				nextDayF = format(nextDay, 'd MMMM', { locale: ru });
+    for (let d = 0; d < 5; d++) {
+      let nextDay = addDays(Date.now(), d),
+        nextDayF = format(nextDay, 'd MMMM', { locale: ru });
 
-			days.push(nextDayF);
-		}
+      days.push({ valueISO: nextDay, value: nextDayF });
+    }
 
-		set(days);
-	}),
-	timesToCallback = readable([{ value: '', disabled: false }], (set) => {
-		let startHour = 8.5,
-			endHour = 18,
-			/**@type {Object & {value: String, disabled: Boolean}[]}*/
-			hours = [],
-			now = new Date(Date.now());
+    set(days);
+  }),
+  selectedDayToCallback = writable(get(daysToCallback)[0]),
+  timesToCallback = derived(
+    selectedDayToCallback,
+    ($selectedDayToCallback, set) => {
+      let startHour = 8.5,
+        endHour = 18,
+        /**@type {Object & {value: String, disabled: Boolean}[]}*/
+        hours = [],
+        now = new Date(Date.now()),
+        dayToCallbackVal = new Date($selectedDayToCallback.valueISO);
 
-		for (let h = startHour; h < endHour; h += 0.5) {
-			let time = { value: '', disabled: false },
-				hRounded = h < 9.5 ? '0' + h.toFixed(0) : h.toFixed(0),
-				hIsDecimal = h % 1 !== 0,
-				mins = hIsDecimal ? '00' : '30';
+      for (let h = startHour; h < endHour; h += 0.5) {
+        let time = { value: '', disabled: false },
+          hRounded = h < 9.5 ? '0' + h.toFixed(0) : h.toFixed(0),
+          hIsDecimal = h % 1 !== 0,
+          mins = hIsDecimal ? '00' : '30';
 
-			time.value = `${hRounded}:${mins}`;
-			time.disabled =
-				Number(hRounded) < now.getHours() ||
-				(Number(hRounded) === now.getHours() && Number(mins) < now.getMinutes());
+        time.value = `${hRounded}:${mins}`;
+        time.disabled =
+          dayToCallbackVal.getDate() <= now.getDate() &&
+          (Number(hRounded) < now.getHours() ||
+            (Number(hRounded) === now.getHours() &&
+              Number(mins) < now.getMinutes()));
 
-			hours.push(time);
-		}
+        hours.push(time);
+      }
 
-		set(hours);
-	});
+      set(hours);
+    },
+  );

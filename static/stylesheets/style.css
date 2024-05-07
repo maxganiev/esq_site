@@ -1,5 +1,5 @@
 .fs-display-lg {
-  font-size: calc((1vmin + 1vmax) * 3) !important;
+  font-size: calc((1vmin + 1vmax) * 2.6) !important;
 }
 
 .fs-display-md {
@@ -27,7 +27,7 @@
 }
 
 .fs-title-md {
-  font-size: 0.7rem !important;
+  font-size: calc((1vmin + 1vmax) * 0.7) !important;
 }
 
 .fs-title-sm {
@@ -75,19 +75,21 @@
 }
 
 .bg-clr-transparent {
-  background-color: "transparent" !important;
+  background-color: transparent !important;
 }
 
 .clr-transparent {
-  color: "transparent" !important;
+  color: transparent !important;
 }
 
 .hover-bg-clr-transparent:hover {
-  background-color: "transparent" !important;
+  background-color: transparent !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-transparent:hover {
-  color: "transparent" !important;
+  color: transparent !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-white-soft {
@@ -100,10 +102,12 @@
 
 .hover-bg-clr-white-soft:hover {
   background-color: #fafafa !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-white-soft:hover {
   color: #fafafa !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-white {
@@ -116,10 +120,12 @@
 
 .hover-bg-clr-white:hover {
   background-color: #fafafa !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-white:hover {
   color: #fafafa !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-white-beige {
@@ -132,10 +138,12 @@
 
 .hover-bg-clr-white-beige:hover {
   background-color: #eeeeee !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-white-beige:hover {
   color: #eeeeee !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-white-light {
@@ -148,10 +156,30 @@
 
 .hover-bg-clr-white-light:hover {
   background-color: #fef7ff !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-white-light:hover {
   color: #fef7ff !important;
+  transition: color 0.4s ease;
+}
+
+.bg-clr-white-gray {
+  background-color: #e6e6e6 !important;
+}
+
+.clr-white-gray {
+  color: #e6e6e6 !important;
+}
+
+.hover-bg-clr-white-gray:hover {
+  background-color: #e6e6e6 !important;
+  transition: background-color 0.4s ease;
+}
+
+.hover-clr-white-gray:hover {
+  color: #e6e6e6 !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-green-dark {
@@ -164,10 +192,12 @@
 
 .hover-bg-clr-green-dark:hover {
   background-color: #051618 !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-green-dark:hover {
   color: #051618 !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-green-dark-low-opacity {
@@ -180,10 +210,12 @@
 
 .hover-bg-clr-green-dark-low-opacity:hover {
   background-color: rgba(5, 22, 24, 0.1) !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-green-dark-low-opacity:hover {
   color: rgba(5, 22, 24, 0.1) !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-seawave-soft {
@@ -196,10 +228,12 @@
 
 .hover-bg-clr-seawave-soft:hover {
   background-color: #00d1f2 !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-seawave-soft:hover {
   color: #00d1f2 !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-seawave-dark {
@@ -212,10 +246,30 @@
 
 .hover-bg-clr-seawave-dark:hover {
   background-color: rgba(5, 22, 24, 0.1019607843) !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-seawave-dark:hover {
   color: rgba(5, 22, 24, 0.1019607843) !important;
+  transition: color 0.4s ease;
+}
+
+.bg-clr-cyan {
+  background-color: #00798c !important;
+}
+
+.clr-cyan {
+  color: #00798c !important;
+}
+
+.hover-bg-clr-cyan:hover {
+  background-color: #00798c !important;
+  transition: background-color 0.4s ease;
+}
+
+.hover-clr-cyan:hover {
+  color: #00798c !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-orange {
@@ -228,10 +282,12 @@
 
 .hover-bg-clr-orange:hover {
   background-color: #ff661c !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-orange:hover {
   color: #ff661c !important;
+  transition: color 0.4s ease;
 }
 
 .bg-clr-black-gray {
@@ -244,10 +300,30 @@
 
 .hover-bg-clr-black-gray:hover {
   background-color: #3a3f40 !important;
+  transition: background-color 0.4s ease;
 }
 
 .hover-clr-black-gray:hover {
   color: #3a3f40 !important;
+  transition: color 0.4s ease;
+}
+
+.bg-clr-light-gray {
+  background-color: #f9f8f7 !important;
+}
+
+.clr-light-gray {
+  color: #f9f8f7 !important;
+}
+
+.hover-bg-clr-light-gray:hover {
+  background-color: #f9f8f7 !important;
+  transition: background-color 0.4s ease;
+}
+
+.hover-clr-light-gray:hover {
+  color: #f9f8f7 !important;
+  transition: color 0.4s ease;
 }
 
 .w-0 {
@@ -280,6 +356,14 @@
 
 .h-30 {
   min-height: 30% !important;
+}
+
+.w-40 {
+  width: 40% !important;
+}
+
+.h-40 {
+  min-height: 40% !important;
 }
 
 .w-60 {
@@ -336,6 +420,14 @@
 
 .h-65-vw {
   min-height: 65vw !important;
+}
+
+.w-5-vh {
+  width: 5vh !important;
+}
+
+.h-5-vh {
+  min-height: 5vh !important;
 }
 
 .w-10-vh {
@@ -426,6 +518,74 @@
   min-height: 150vh !important;
 }
 
+.pt-2-rem {
+  padding-top: 2rem !important;
+}
+
+.mt-2-rem {
+  margin-top: 2rem !important;
+}
+
+.p-2-rem {
+  padding: 2rem !important;
+}
+
+.m-2-rem {
+  margin: 2rem !important;
+}
+
+.px-2-rem {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+.mx-2-rem {
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+}
+
+.ps-2-rem {
+  padding-left: 2rem !important;
+}
+
+.ms-2-rem {
+  margin-left: 2rem !important;
+}
+
+.pt-4-rem {
+  padding-top: 4rem !important;
+}
+
+.mt-4-rem {
+  margin-top: 4rem !important;
+}
+
+.p-4-rem {
+  padding: 4rem !important;
+}
+
+.m-4-rem {
+  margin: 4rem !important;
+}
+
+.px-4-rem {
+  padding-left: 4rem !important;
+  padding-right: 4rem !important;
+}
+
+.mx-4-rem {
+  margin-left: 4rem !important;
+  margin-right: 4rem !important;
+}
+
+.ps-4-rem {
+  padding-left: 4rem !important;
+}
+
+.ms-4-rem {
+  margin-left: 4rem !important;
+}
+
 .pt-5-rem {
   padding-top: 5rem !important;
 }
@@ -440,6 +600,24 @@
 
 .m-5-rem {
   margin: 5rem !important;
+}
+
+.px-5-rem {
+  padding-left: 5rem !important;
+  padding-right: 5rem !important;
+}
+
+.mx-5-rem {
+  margin-left: 5rem !important;
+  margin-right: 5rem !important;
+}
+
+.ps-5-rem {
+  padding-left: 5rem !important;
+}
+
+.ms-5-rem {
+  margin-left: 5rem !important;
 }
 
 .pt-20-vh {
@@ -458,12 +636,50 @@
   margin: 20vh !important;
 }
 
+.px-20-vh {
+  padding-left: 20vh !important;
+  padding-right: 20vh !important;
+}
+
+.mx-20-vh {
+  margin-left: 20vh !important;
+  margin-right: 20vh !important;
+}
+
+.ps-20-vh {
+  padding-left: 20vh !important;
+}
+
+.ms-20-vh {
+  margin-left: 20vh !important;
+}
+
+.flex-grow-0-25 {
+  flex-grow: 0.25;
+}
+
 .flex-grow-0-5 {
   flex-grow: 0.5;
 }
 
 .flex-grow-1 {
   flex-grow: 1;
+}
+
+.flex-grow-2 {
+  flex-grow: 2;
+}
+
+.flex-grow-2-5 {
+  flex-grow: 2.5;
+}
+
+.flex-column-gap-0-25 {
+  column-gap: 0.25rem;
+}
+
+.flex-row-gap-0-25 {
+  row-gap: 0.25rem;
 }
 
 .flex-column-gap-0-5 {
@@ -554,6 +770,10 @@
   position: absolute;
 }
 
+.pos-sticky {
+  position: sticky;
+}
+
 .top-left {
   top: 0;
   left: 0;
@@ -582,7 +802,27 @@
 }
 
 .lh-lg {
-  line-height: calc((1vmin + 1vmax) * 1.5) !important;
+  line-height: calc((1vmin + 1vmax) * 1.8) !important;
+}
+
+.lh-md {
+  line-height: calc((1vmin + 1vmax) * 1.4) !important;
+}
+
+.o-0 {
+  opacity: 0 !important;
+}
+
+.o-0-3 {
+  opacity: 0.3 !important;
+}
+
+.o-0-6 {
+  opacity: 0.6 !important;
+}
+
+.o-1 {
+  opacity: 1 !important;
 }
 
 *::before, *::after {
@@ -645,7 +885,7 @@ body main {
   width: 100%;
   left: 0%;
   height: 1.5px;
-  top: 120%;
+  top: 125%;
   background-color: #00d1f2;
 }
 

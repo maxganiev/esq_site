@@ -1,224 +1,265 @@
 $index: calc(1vmin + 1vmax);
 
 $font-sizes: (
-	'display-lg': calc($index * 3),
-	'display-md': calc($index * 1.8),
-	'display-sm': calc($index * 1.2),
-	//
-	'headline-lg': calc($index * 0.85),
-	'headline-md': calc($index * 0.75),
-	'headline-sm': calc($index * 0.55),
-	//
-	'title-lg': 1rem,
-	'title-md': 0.7rem,
-	'title-sm': 0.6rem,
-	//
-	'label-lg': 1rem,
-	'label-md': 0.7rem,
-	'label-sm': 0.6rem,
-	//
-	'body-lg': calc($index * 0.65),
-	'body-md': calc($index * 0.6),
-	'body-sm': calc($index * 0.5),
+  'display-lg': calc($index * 2.6),
+  'display-md': calc($index * 1.8),
+  'display-sm': calc($index * 1.2),
+  //
+  'headline-lg': calc($index * 0.85),
+  'headline-md': calc($index * 0.75),
+  'headline-sm': calc($index * 0.55),
+  //
+  'title-lg': 1rem,
+  'title-md': calc($index * 0.7),
+  'title-sm': 0.6rem,
+  //
+  'label-lg': 1rem,
+  'label-md': 0.7rem,
+  'label-sm': 0.6rem,
+  //
+  'body-lg': calc($index * 0.65),
+  'body-md': calc($index * 0.6),
+  'body-sm': calc($index * 0.5),
 );
 @each $key, $value in $font-sizes {
-	.fs-#{$key} {
-		font-size: $value !important;
-	}
+  .fs-#{$key} {
+    font-size: $value !important;
+  }
 }
 
 $font-weights: (
-	'bold': 700,
-	'semi-bold': 500,
-	'regular': 400,
-	'light': 200,
+  'bold': 700,
+  'semi-bold': 500,
+  'regular': 400,
+  'light': 200,
 );
 @each $key, $value in $font-weights {
-	.fw-#{$key} {
-		font-weight: $value !important;
-	}
+  .fw-#{$key} {
+    font-weight: $value !important;
+  }
 }
 
 $colors: (
-	'transparent': 'transparent',
-	'white-soft': #fafafa,
-	'white': #fafafa,
-	'white-beige': #eeeeee,
-	'white-light': #fef7ff,
+  'transparent': transparent,
+  'white-soft': #fafafa,
+  'white': #fafafa,
+  'white-beige': #eeeeee,
+  'white-light': #fef7ff,
+  'white-gray': #e6e6e6,
 
-	'green-dark': #051618,
-	'green-dark-low-opacity': rgba(5, 22, 24, 0.1),
-	'seawave-soft': #00d1f2,
-	'seawave-dark': #0516181a,
+  'green-dark': #051618,
+  'green-dark-low-opacity': rgba(5, 22, 24, 0.1),
+  'seawave-soft': #00d1f2,
+  'seawave-dark': #0516181a,
+  'cyan': #00798c,
 
-	'orange': #ff661c,
+  'orange': #ff661c,
 
-	'black-gray': #3a3f40,
+  'black-gray': #3a3f40,
+  'light-gray': #f9f8f7,
 );
 @each $key, $value in $colors {
-	.bg-clr-#{$key} {
-		background-color: $value !important;
-	}
+  .bg-clr-#{$key} {
+    background-color: $value !important;
+  }
 
-	.clr-#{$key} {
-		color: $value !important;
-	}
+  .clr-#{$key} {
+    color: $value !important;
+  }
 
-	.hover-bg-clr-#{$key} {
-		&:hover {
-			background-color: $value !important;
-		}
-	}
+  .hover-bg-clr-#{$key} {
+    &:hover {
+      background-color: $value !important;
+      transition: background-color 0.4s ease;
+    }
+  }
 
-	.hover-clr-#{$key} {
-		&:hover {
-			color: $value !important;
-		}
-	}
+  .hover-clr-#{$key} {
+    &:hover {
+      color: $value !important;
+      transition: color 0.4s ease;
+    }
+  }
 }
 
 $sizes: (
-	'0': 0px,
-	'5': 5%,
-	'20': 20%,
-	'30': 30%,
-	'60': 60%,
-	'65': 65%,
-	'80': 80%,
-	'85': 85%,
-	'95': 95%,
-	'50-vw': 50vw,
-	'65-vw': 65vw,
-	'10-vh': 10vh,
-	'15-vh': 15vh,
-	'20-vh': 20vh,
-	'30-vh': 30vh,
-	'40-vh': 40vh,
-	'50-vh': 50vh,
-	'65-vh': 65vh,
-	'75-vh': 75vh,
-	'85-vh': 85vh,
-	'100-vh': 100vh,
-	'150-vh': 150vh,
+  '0': 0px,
+  '5': 5%,
+  '20': 20%,
+  '30': 30%,
+  '40': 40%,
+  '60': 60%,
+  '65': 65%,
+  '80': 80%,
+  '85': 85%,
+  '95': 95%,
+  '50-vw': 50vw,
+  '65-vw': 65vw,
+  '5-vh': 5vh,
+  '10-vh': 10vh,
+  '15-vh': 15vh,
+  '20-vh': 20vh,
+  '30-vh': 30vh,
+  '40-vh': 40vh,
+  '50-vh': 50vh,
+  '65-vh': 65vh,
+  '75-vh': 75vh,
+  '85-vh': 85vh,
+  '100-vh': 100vh,
+  '150-vh': 150vh,
 );
 @each $key, $value in $sizes {
-	.w-#{$key} {
-		width: $value !important;
-	}
-	.h-#{$key} {
-		min-height: $value !important;
-	}
+  .w-#{$key} {
+    width: $value !important;
+  }
+  .h-#{$key} {
+    min-height: $value !important;
+  }
 }
 
 $spaces: (
-	'5-rem': 5rem,
-	'20-vh': 20vh,
+  '2-rem': 2rem,
+  '4-rem': 4rem,
+  '5-rem': 5rem,
+  '20-vh': 20vh,
 );
 @each $key, $value in $spaces {
-	.pt-#{$key} {
-		padding-top: $value !important;
-	}
-	.mt-#{$key} {
-		margin-top: $value !important;
-	}
-	.p-#{$key} {
-		padding: $value !important;
-	}
-	.m-#{$key} {
-		margin: $value !important;
-	}
+  .pt-#{$key} {
+    padding-top: $value !important;
+  }
+  .mt-#{$key} {
+    margin-top: $value !important;
+  }
+  .p-#{$key} {
+    padding: $value !important;
+  }
+  .m-#{$key} {
+    margin: $value !important;
+  }
+  .px-#{$key} {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+  .mx-#{$key} {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+  .ps-#{$key} {
+    padding-left: $value !important;
+  }
+  .ms-#{$key} {
+    margin-left: $value !important;
+  }
 }
 
 $flex-grow-options: (
-	'0-5': 0.5,
-	'1': 1,
+  '0-25': 0.25,
+  '0-5': 0.5,
+  '1': 1,
+  '2': 2,
+  '2-5': 2.5,
 );
 @each $key, $value in $flex-grow-options {
-	.flex-grow-#{$key} {
-		flex-grow: $value;
-	}
+  .flex-grow-#{$key} {
+    flex-grow: $value;
+  }
 }
 
 $flex-gap-options: (
-	'0-5': 0.5rem,
-	'1': 1rem,
-	'1-5': 1.5rem,
-	'2': 2rem,
-	'3': 3rem,
-	'6': 6rem,
-	'8': 8rem,
+  '0-25': 0.25rem,
+  '0-5': 0.5rem,
+  '1': 1rem,
+  '1-5': 1.5rem,
+  '2': 2rem,
+  '3': 3rem,
+  '6': 6rem,
+  '8': 8rem,
 );
 @each $key, $value in $flex-gap-options {
-	.flex-column-gap-#{$key} {
-		column-gap: $value;
-	}
+  .flex-column-gap-#{$key} {
+    column-gap: $value;
+  }
 
-	.flex-row-gap-#{$key} {
-		row-gap: $value;
-	}
+  .flex-row-gap-#{$key} {
+    row-gap: $value;
+  }
 }
 
 $flex-options: (
-	'0-3': 0.3,
-	'0-4': 0.4,
-	'0-5': 0.5,
-	'0-6': 0.6,
-	'1': 1,
+  '0-3': 0.3,
+  '0-4': 0.4,
+  '0-5': 0.5,
+  '0-6': 0.6,
+  '1': 1,
 );
 @each $key, $value in $flex-options {
-	.flex-#{$key} {
-		flex: $value !important;
-	}
+  .flex-#{$key} {
+    flex: $value !important;
+  }
 }
 
 $positioning-options: (
-	'r': relative,
-	'f': fixed,
-	'a': absolute,
+  'r': relative,
+  'f': fixed,
+  'a': absolute,
+  'sticky': sticky,
 );
 @each $key, $value in $positioning-options {
-	.pos-#{$key} {
-		position: $value;
-	}
+  .pos-#{$key} {
+    position: $value;
+  }
 }
 
 .top-left {
-	top: 0;
-	left: 0;
+  top: 0;
+  left: 0;
 }
 
 .bottom-left {
-	bottom: 0;
-	left: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .bottom-right {
-	bottom: 0;
-	right: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .z-n-1 {
-	z-index: -1;
+  z-index: -1;
 }
 
 .z-1 {
-	z-index: 1;
+  z-index: 1;
 }
 
 $radius-options: (
-	'100': 100px,
+  '100': 100px,
 );
 @each $key, $value in $radius-options {
-	.radius-#{$key} {
-		border-radius: $value;
-	}
+  .radius-#{$key} {
+    border-radius: $value;
+  }
 }
 
 $line-heights: (
-	'lg': calc($index * 1.5),
+  'lg': calc($index * 1.8),
+  'md': calc($index * 1.4),
 );
 @each $key, $value in $line-heights {
-	.lh-#{$key} {
-		line-height: $value !important;
-	}
+  .lh-#{$key} {
+    line-height: $value !important;
+  }
+}
+
+$opacity-options: (
+  '0': 0,
+  '0-3': 0.3,
+  '0-6': 0.6,
+  '1': 1,
+);
+@each $key, $value in $opacity-options {
+  .o-#{$key} {
+    opacity: $value !important;
+  }
 }

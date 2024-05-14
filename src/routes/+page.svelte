@@ -5,6 +5,7 @@
   import ContactForm from '$lib/modules/ContactForm.svelte';
   import Icon from '@iconify/svelte';
   import GutterMain from '$lib/components/gutters/GutterMain.svelte';
+  import LinkOrangePill from '$lib/components/buttons/LinkOrangePill.svelte';
 </script>
 
 <svelte:head>
@@ -22,17 +23,9 @@
         ESQ — передовой производитель промышленной электроники
       </h1>
 
-      <a
-        class="btn radius-100 bg-clr-orange clr-white fs-label-md fw-semi-bold mt-5 align-self-start"
-        href="https://b2b.elcomspb.ru/"
-        target="_blank">
+      <LinkOrangePill>
         <span>Перейти в каталог</span>
-        <Icon
-          icon="lucide:arrow-right"
-          width="1.2rem"
-          height="1.2rem"
-          style="color: inherit" />
-      </a>
+      </LinkOrangePill>
     </div>
 
     <div class="d-flex align-items-center justify-content-end flex-0-5">

@@ -5,6 +5,7 @@
     daysToCallback,
     timesToCallback,
     selectedDayToCallback,
+    phoneMasks,
   } from '$lib/stores/selectFormData';
   import { Debounce } from '$lib/utils/debounce';
 
@@ -28,6 +29,9 @@
     input.phone = detail.inputState.maskedValue;
     console.log(detail);
   }
+
+  $: countryIdx = 'RU';
+  $: currentCountry = $phoneMasks[countryIdx];
 
   /**@type {String[] }*/
   let citiesFound = [];
@@ -93,14 +97,25 @@
       <label class="fs-headline-sm clr-white" for="phone">Телефон</label>
     </div>
     <div class="w-65">
-      <MaskInput
-        alwaysShowMask
-        mask="+7 (900) 000 - 0000"
-        size={20}
-        showMask
-        maskChar="_"
-        class="form-control form-control-sm fs-headline-sm w-65"
-        on:change={bindPhone} />
+      <div class="d-flex flex-column-gap-0-5 w-100">
+        <select
+          class="form-select form-select-sm w-30 fs-headline-sm"
+          bind:value={countryIdx}>
+          {#each Object.keys($phoneMasks) as key}
+            <option value={key}>
+              {$phoneMasks[key].name}
+              {$phoneMasks[key].emoji}
+            </option>
+          {/each}
+        </select>
+        <MaskInput
+          alwaysShowMask
+          mask={currentCountry.mask}
+          showMask
+          maskChar="_"
+          class="form-control form-control-sm fs-headline-sm w-65"
+          on:change={bindPhone} />
+      </div>
     </div>
   </div>
 

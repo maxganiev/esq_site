@@ -55,17 +55,24 @@ body {
   object-fit: contain;
 }
 
-.hover-item > li:hover,
+.hover-item > li:hover {
+  background-color: #00798c;
+}
+
 .active-item {
   position: relative;
+  border-bottom: 1px #00d1f2 solid;
+  margin-top: 1px;
+}
 
-  &::after {
-    position: absolute;
-    content: '';
-    width: 100%;
-    left: 0%;
-    height: 1.5px;
-    top: 125%;
-    background-color: #00d1f2;
-  }
+.pointer-none {
+  pointer-events: none !important;
+}
+
+.list-dashed {
+  list-style-type: ' - ' !important;
+}
+
+.rounded-3 {
+  border-radius: 12px !important;
 }

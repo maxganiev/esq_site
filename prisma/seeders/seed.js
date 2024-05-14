@@ -1,9 +1,12 @@
 import { PrismaClient } from '@prisma/client';
-import seedBranches from './seedBranches.js';
+import seedAllCategories from './seedAllCategories.js';
+import seedKeyFeatures from './seedKeyFeatures.js';
+
 const prisma = new PrismaClient();
 
 async function seed() {
-  await seedBranches(prisma);
+  await seedAllCategories(prisma);
+  await seedKeyFeatures(prisma);
 }
 
 seed()

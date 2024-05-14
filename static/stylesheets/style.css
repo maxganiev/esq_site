@@ -358,12 +358,28 @@
   min-height: 30% !important;
 }
 
+.w-35 {
+  width: 35% !important;
+}
+
+.h-35 {
+  min-height: 35% !important;
+}
+
 .w-40 {
   width: 40% !important;
 }
 
 .h-40 {
   min-height: 40% !important;
+}
+
+.w-45 {
+  width: 45% !important;
+}
+
+.h-45 {
+  min-height: 45% !important;
 }
 
 .w-60 {
@@ -452,6 +468,14 @@
 
 .h-20-vh {
   min-height: 20vh !important;
+}
+
+.w-25-vh {
+  width: 25vh !important;
+}
+
+.h-25-vh {
+  min-height: 25vh !important;
 }
 
 .w-30-vh {
@@ -806,7 +830,11 @@
 }
 
 .lh-md {
-  line-height: calc((1vmin + 1vmax) * 1.4) !important;
+  line-height: calc((1vmin + 1vmax) * 1.2) !important;
+}
+
+.lh-sm {
+  line-height: calc((1vmin + 1vmax) * 0.9) !important;
 }
 
 .o-0 {
@@ -823,6 +851,10 @@
 
 .o-1 {
   opacity: 1 !important;
+}
+
+.ratio-1x1 {
+  aspect-ratio: 1 !important;
 }
 
 *::before, *::after {
@@ -874,19 +906,26 @@ body main {
   object-fit: contain;
 }
 
-.hover-item > li:hover,
+.hover-item > li:hover {
+  background-color: #00798c;
+}
+
 .active-item {
   position: relative;
+  border-bottom: 1px #00d1f2 solid;
+  margin-top: 1px;
 }
-.hover-item > li:hover::after,
-.active-item::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  left: 0%;
-  height: 1.5px;
-  top: 125%;
-  background-color: #00d1f2;
+
+.pointer-none {
+  pointer-events: none !important;
+}
+
+.list-dashed {
+  list-style-type: " - " !important;
+}
+
+.rounded-3 {
+  border-radius: 12px !important;
 }
 
 /*# sourceMappingURL=style.css.map */

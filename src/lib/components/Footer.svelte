@@ -18,7 +18,7 @@
 
 <footer
   class="clr-white-soft bg-clr-green-dark d-grid h-40-vh flex-column-gap-2 p-5">
-  <ul class="list lh-lg fs-body-md clr-white">
+  <ul class="list fs-body-md clr-white">
     <li class="pb-3">
       <img
         src="{globals.imagePath}logo/esq.svg"
@@ -59,7 +59,7 @@
     </li>
   </ul>
 
-  <ul class="list lh-lg fs-body-lg d-grid links">
+  <ul class="list fs-body-lg d-grid links">
     {#each crumbs.slice(0, 3) as crumb, index}
       <li class={activeCrumbIdx === index ? 'active-item' : ''}>
         <a class="clr-white" href={crumb.href}>{crumb.name}</a>
@@ -71,14 +71,14 @@
     </li>
   </ul>
 
-  <ul class="list lh-lg fs-body-md">
+  <ul class="list fs-body-md">
     <li class="fs-body-lg">Оборудование</li>
     {#each $categories.slice(0, 7) as category}
       <li><a class="clr-white" href={category.href}>{category.name}</a></li>
     {/each}
   </ul>
 
-  <ul class="list lh-lg fs-body-md">
+  <ul class="list fs-body-md">
     {#each $categories.slice(7, 12) as category}
       <li><a class="clr-white" href={category.href}>{category.name}</a></li>
     {/each}

@@ -42,8 +42,7 @@
                 menuItems={$categories.slice(0, -1)}
                 dropdownMenuClasses={[
                   'clr-white-soft',
-                  'bg-clr-green-dark',
-                  'p-3',
+                  'bg-clr-seawave-dark',
                   'mt-4',
                   'w-65-vw',
                   'fs-body-lg',

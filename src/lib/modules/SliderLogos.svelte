@@ -11,12 +11,20 @@
       { id: 4, path: imgPath + 'Rosneft_Logo 1.svg' },
       { id: 5, path: imgPath + 'Sibur_Holding_Logo 1.svg' },
       { id: 6, path: imgPath + 'SUEK_Logo 1.svg' },
+      { id: 7, path: imgPath + '1.svg' },
+      { id: 8, path: imgPath + '2.png' },
+      { id: 9, path: imgPath + '3.png' },
+      { id: 10, path: imgPath + '4.png' },
+      { id: 11, path: imgPath + '5.png' },
+      { id: 12, path: imgPath + '6.png' },
+      { id: 13, path: imgPath + '7.svg' },
+      { id: 14, path: imgPath + '8.svg' },
     ];
 </script>
 
 <div
-  class="w-100 h-40-vh bg-clr-white-beige d-flex flex-column justify-content-center">
-  <GutterMain classList={['flex-0-3']}>
+  class="w-100 h-30-vh bg-clr-white-beige d-flex flex-column justify-content-center">
+  <GutterMain classList={['mb-3']}>
     <h4 class="fs-headline-lg mb-0">Нам доверяют более 199 клиентов</h4>
   </GutterMain>
 

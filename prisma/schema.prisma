@@ -8,16 +8,19 @@ datasource db {
 }
 
 model Category {
-  id         Int       @id @default(autoincrement())
-  parent_id  Int       @default(-1)
-  name       String    @db.VarChar(255)
-  href       String?   @db.Text
-  image      String?   @db.Text
-  product_id Int?
-  sort_order Int
-  active     Int       @default(1) @db.TinyInt
-  created_at DateTime  @default(now()) @db.DateTime(0)
-  updated_at DateTime? @db.DateTime(0)
+  id           Int            @id @default(autoincrement())
+  parent_id    Int            @default(-1)
+  name         String         @db.VarChar(255)
+  href         String?        @db.Text
+  image        String?        @db.Text
+  product_id   Int?
+  sort_order   Int
+  active       Int            @default(1) @db.TinyInt
+  created_at   DateTime       @default(now()) @db.DateTime(0)
+  updated_at   DateTime?      @db.DateTime(0)
+  link         String?        @db.Text
+  description  String?        @db.Text
+  key_features Key_features[]
 }
 
 model Branch {
@@ -25,4 +28,13 @@ model Branch {
   store_id   Int
   key        String @db.Text
   value      String @db.Text
+}
+
+model Key_features {
+  id          Int      @id @default(autoincrement())
+  type_id     Int      @default(1)
+  category_id Int
+  label       String?  @db.VarChar(255)
+  text        String?  @db.Text
+  category    Category @relation(fields: [category_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }

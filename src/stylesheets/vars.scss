@@ -87,7 +87,9 @@ $sizes: (
   '5': 5%,
   '20': 20%,
   '30': 30%,
+  '35': 35%,
   '40': 40%,
+  '45': 45%,
   '60': 60%,
   '65': 65%,
   '80': 80%,
@@ -99,6 +101,7 @@ $sizes: (
   '10-vh': 10vh,
   '15-vh': 15vh,
   '20-vh': 20vh,
+  '25-vh': 25vh,
   '30-vh': 30vh,
   '40-vh': 40vh,
   '50-vh': 50vh,
@@ -244,7 +247,8 @@ $radius-options: (
 
 $line-heights: (
   'lg': calc($index * 1.8),
-  'md': calc($index * 1.4),
+  'md': calc($index * 1.2),
+  'sm': calc($index * 0.9),
 );
 @each $key, $value in $line-heights {
   .lh-#{$key} {
@@ -261,5 +265,14 @@ $opacity-options: (
 @each $key, $value in $opacity-options {
   .o-#{$key} {
     opacity: $value !important;
+  }
+}
+
+$ratios-options: (
+  '1x1': 1/1,
+);
+@each $key, $value in $ratios-options {
+  .ratio-#{$key} {
+    aspect-ratio: $value !important;
   }
 }

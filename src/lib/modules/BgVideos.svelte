@@ -89,7 +89,7 @@
 </script>
 
 <div
-  class="d-flex flex-column flex-row-gap-1 w-100 h-150-vh bg-clr-white-beige">
+  class="d-flex flex-column flex-row-gap-2 w-100 h-150-vh bg-clr-white-beige">
   {#each srcs as src, index}
     <BgVideo {src} thumbnail={thumbnails[index]}>
       <div

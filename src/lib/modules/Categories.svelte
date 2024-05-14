@@ -3,6 +3,7 @@
   import { globals } from '$lib/globals';
   import { categories } from '$lib/stores/categories';
   import { isMobile } from '$lib/stores/ui';
+  import Icon from '@iconify/svelte';
 
   const path = globals.imagePath + 'categories/';
 </script>
@@ -15,36 +16,52 @@
       Ключевой ассортимент
     </h2>
     {#each $categories as category (category.id)}
-      <!--Движки-->
+      <!--Комплектные трансформаторные подстанции-->
       {#if category.id === 1}
         <div
           class="category-col h-40-vh pos-r"
           style="grid-column: 1/{$isMobile ? 1 : 3}">
           <a
             href="category{category.href}"
-            class="d-block w-100 h-100 rounded-3"
+            class="d-block w-100 h-100 rounded-3 category-link-hover"
             style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover;">
             <span class="clr-white fs-headline-md d-block pt-3 ps-3">
               {category.name}
             </span>
+            <button
+              class="btn btn-sm rounded-circle ratio-1x1 bg-clr-white pos-a bottom-right me-2 mb-2 o-0">
+              <Icon
+                icon="lucide:arrow-right"
+                width="1.2rem"
+                height="1.2rem"
+                class="clr-orange" />
+            </button>
           </a>
         </div>
-        <!--Комплектные подстанции-->
-      {:else if category.id === 9}
+        <!--Комплектное распределительное устройство-->
+      {:else if category.id === 13}
         <div
           class="category-col h-40-vh pos-r center center/cover;"
           style="grid-column: {$isMobile ? '1/2' : '2/4'}">
           <a
             href="category{category.href}"
-            class="d-block w-100 h-100 rounded-3"
+            class="d-block w-100 h-100 rounded-3 category-link-hover"
             style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image})">
             <span class="clr-white fs-headline-md d-block pt-3 ps-3">
               {category.name}
             </span>
+            <button
+              class="btn btn-sm rounded-circle ratio-1x1 bg-clr-white pos-a bottom-right me-2 mb-2 o-0">
+              <Icon
+                icon="lucide:arrow-right"
+                width="1.2rem"
+                height="1.2rem"
+                class="clr-orange" />
+            </button>
           </a>
         </div>
         <!--Разное-->
-      {:else if category.id === 13}
+      {:else if category.id === 17}
         <div class="category-col h-40-vh pos-r">
           <a
             class="d-block w-100 h-100 rounded-3 bg-clr-white"
@@ -52,18 +69,31 @@
             <span class="clr-green-dark fs-headline-md d-block pt-3 ps-3">
               {category.name}
             </span>
-            <span class="clr-orange pos-a bottom-right me-5 mb-5">&#8594</span>
+
+            <Icon
+              icon="lucide:arrow-right"
+              width="1.2rem"
+              height="1.2rem"
+              class="clr-orange pos-a bottom-right me-3 mb-3" />
           </a>
         </div>
       {:else}
         <div class="category-col h-40-vh pos-r">
           <a
             href="category{category.href}"
-            class="d-block w-100 h-100 rounded-3"
+            class="d-block w-100 h-100 rounded-3 category-link-hover"
             style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover;">
             <span class="clr-white fs-headline-md d-block pt-3 ps-3">
               {category.name}
             </span>
+            <button
+              class="btn btn-sm rounded-circle ratio-1x1 bg-clr-white pos-a bottom-right me-2 mb-2 o-0">
+              <Icon
+                icon="lucide:arrow-right"
+                width="1.2rem"
+                height="1.2rem"
+                class="clr-orange" />
+            </button>
           </a>
         </div>
       {/if}
@@ -81,5 +111,10 @@
     :global(.categories) {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  .category-link-hover:hover > button {
+    opacity: 1 !important;
+    transition: opacity 0.4s ease-in;
   }
 </style>

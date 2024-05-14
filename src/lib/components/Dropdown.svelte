@@ -1,5 +1,6 @@
 <script>
   import { navDropDownCategoriesShow } from '$lib/stores/ui';
+  import Icon from '@iconify/svelte';
   import { fade } from 'svelte/transition';
 
   /**@type {import('$lib/types/layoutTypes').BreadCrumb[]}*/
@@ -15,7 +16,6 @@
   function toggleDropdown(
     /**@type {MouseEvent & { currentTarget: EventTarget & HTMLDivElement; }}*/ e,
   ) {
-    e.preventDefault();
     collapsed = !collapsed;
     navDropDownCategoriesShow.update((val) => (val = !collapsed));
   }
@@ -23,28 +23,28 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="dropdown fs-body-lg" on:click|self={(e) => toggleDropdown(e)}>
+<div class="dropdown fs-body-lg" on:click={(e) => toggleDropdown(e)}>
   <!-- svelte-ignore a11y-invalid-attribute -->
   <a href="#">
-    <span class="d-flex flex-nowrap">
+    <span class="d-flex flex-nowrap align-items-center">
       {title}
-      <img
-        src="/assets/images/chevron-{$navDropDownCategoriesShow
-          ? 'up'
-          : 'down'}-solid-{textColor}.svg"
-        alt="chevron" />
+      <Icon
+        icon="mingcute:{$navDropDownCategoriesShow ? 'up' : 'down'}-line"
+        width="24px"
+        height="24px"
+        style="color: white" />
     </span>
   </a>
   {#if $navDropDownCategoriesShow}
     <ul
       in:fade={{ duration: 400 }}
       out:fade={{ duration: 400 }}
-      class="dropdown-menu d-flex flex-column-gap-3 flex-row-gap-1-5 {dropdownMenuClasses
+      class="dropdown-menu d-flex flex-column-gap-1 flex-row-gap-0-5 {dropdownMenuClasses
         .map((c) => c)
         .join(' ')} flex-wrap rounded-bottom">
       {#each menuItems as item}
-        <li class="col-md-5 col-sm-12">
-          <a href={item.href}>{item.name}</a>
+        <li class="col-md-5 col-sm-12 px-2 py-3">
+          <a class="w-100 h-100" href="/category{item.href}">{item.name}</a>
         </li>
       {/each}
     </ul>
@@ -58,12 +58,15 @@
     user-select: none;
 
     a {
-      pointer-events: none;
       span > img {
         width: 20px;
         object-fit: contain;
         margin-left: 5px;
       }
+    }
+
+    .dropdown-menu {
+      backdrop-filter: blur(20px);
     }
   }
 </style>

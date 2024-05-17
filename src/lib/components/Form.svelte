@@ -8,6 +8,7 @@
     phoneMasks,
   } from '$lib/stores/selectFormData';
   import { Debounce } from '$lib/utils/debounce';
+  import Autocomplete from './Autocomplete.svelte';
 
   /**@type {Function}*/
   export let onSubmit,
@@ -32,18 +33,6 @@
 
   $: countryIdx = 'RU';
   $: currentCountry = $phoneMasks[countryIdx];
-
-  /**@type {String[] }*/
-  let citiesFound = [];
-  function searchCities(/**@type {Event & { target: HTMLInputElement; }}*/ e) {
-    const query = e.target.value.toLowerCase();
-    if (query.length < 1) return;
-
-    citiesFound = $cities
-      .filter((city) => city.name.toLowerCase().includes(query))
-      .map((city) => city.name);
-    input.city = citiesFound[0] || '-';
-  }
 
   $: formIsNotValid = Object.values(input).some(
     (val) =>
@@ -86,8 +75,7 @@
     <div class="w-65">
       <input
         type="text"
-        class="form-control form-control-sm fs-headline-sm w-65"
-        placeholder="Представьтесь, пожалуйста"
+        class="form-control fs-headline-sm w-65"
         bind:value={input.name} />
     </div>
   </div>
@@ -98,13 +86,11 @@
     </div>
     <div class="w-65">
       <div class="d-flex flex-column-gap-0-5 w-100">
-        <select
-          class="form-select form-select-sm w-30 fs-headline-sm"
-          bind:value={countryIdx}>
+        <select class="form-select w-30 fs-headline-sm" bind:value={countryIdx}>
           {#each Object.keys($phoneMasks) as key}
             <option value={key}>
-              {$phoneMasks[key].name}
               {$phoneMasks[key].emoji}
+              {$phoneMasks[key].iso2}
             </option>
           {/each}
         </select>
@@ -113,7 +99,7 @@
           mask={currentCountry.mask}
           showMask
           maskChar="_"
-          class="form-control form-control-sm fs-headline-sm w-65"
+          class="form-control fs-headline-sm w-65"
           on:change={bindPhone} />
       </div>
     </div>
@@ -126,19 +112,10 @@
       </label>
     </div>
     <div class="w-65 d-flex flex-column flex-row-gap-0-5">
-      <input
-        type="text"
-        class="form-control form-control-sm fs-headline-sm w-65"
-        placeholder="Начните вводить название города"
-        on:input={(e) => debounce.start(searchCities, [e])} />
-      <select class="form-select form-select-sm w-65" bind:value={input.city}>
-        {#if citiesFound.length === 0}
-          <option value="-">-</option>
-        {/if}
-        {#each citiesFound as city}
-          <option value={city}>{city}</option>
-        {/each}
-      </select>
+      <Autocomplete
+        items={$cities}
+        itemKey={'name'}
+        class="fs-headline-sm w-65 form-control" />
     </div>
   </div>
 
@@ -151,7 +128,7 @@
     <div class="w-65">
       <div class="d-flex flex-column-gap-0-5">
         <select
-          class="form-select form-select-sm w-30 fs-headline-sm"
+          class="form-select w-30 fs-headline-sm"
           bind:value={input.callbackDate}
           on:change={setDayToCallBack}>
           {#each $daysToCallback as day}
@@ -162,7 +139,7 @@
         </select>
 
         <select
-          class="form-select form-select-sm w-30 fs-headline-sm"
+          class="form-select w-30 fs-headline-sm"
           bind:value={input.callbackTime}>
           {#if input.callbackTime === '-'}
             <option value="-">-</option>
@@ -187,14 +164,13 @@
     <div class="w-20">
       <label class="fs-headline-sm clr-white" for="name">Сообщение</label>
     </div>
-    <div class="w-65">
+    <div class="w-80">
       <textarea
         class="form-control w-100 h-15-vh fs-headline-sm"
-        bind:value={input.message}
-        placeholder="Оставьте свое сообщение и мы обязательно с Вами свяжемся" />
+        bind:value={input.message} />
       <input
         type="submit"
-        class="btn btn-sm bg-clr-orange clr-white w-50 fs-headline-sm mt-3 py-2 rounded-pill"
+        class="btn btn-sm bg-clr-orange clr-white w-50 fs-body-lg fw-semi-bold mt-3 py-2 rounded-pill"
         value="Отправить"
         disabled={formIsNotValid} />
     </div>

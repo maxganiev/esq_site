@@ -18,8 +18,8 @@
   </div>
 
   <GutterMain classList={['d-flex']}>
-    <div class="d-flex flex-column flex-0-4">
-      <h1 class="fs-display-lg fw-semi-bold clr-white mt-5">
+    <div class="d-flex flex-column w-60">
+      <h1 class="fs-display-lg fw-semi-bold clr-white">
         ESQ — передовой производитель промышленной электроники
       </h1>
 
@@ -28,11 +28,12 @@
       </LinkOrangePill>
     </div>
 
-    <div class="d-flex align-items-center justify-content-end flex-0-5">
+    <div
+      class="d-flex align-items-center justify-content-end pos-a bottom z-n-1">
       <img
         src="assets/images/esq_motor.png"
         alt="esq motor"
-        class="w-100 object-fit-contain" />
+        class="w-60 object-fit-contain z-n-1" />
     </div>
   </GutterMain>
 </div>
@@ -41,18 +42,16 @@
 <BgVideos />
 <Categories />
 <ContactForm>
-  <div
-    slot="contact-details"
-    class="d-flex flex-column w-80 mx-auto flex-row-gap-1">
+  <div slot="contact-details" class="d-flex flex-column w-100 flex-row-gap-2">
     <div class="w-100">
       <span class="d-flex flex-column-gap-0-5 align-items-center">
         <Icon icon="ic:baseline-mail" style="color: white" />
-        <p class="m-0 p-0 fs-headline-md fw-semi-bold clr-white">
+        <p class="m-0 p-0 fs-title-md fw-semi-bold clr-white">
           Электронная почта
         </p>
       </span>
       <a
-        class="fs-headline-sm clr-white d-block mt-1"
+        class="fs-body-lg clr-white d-block mt-1"
         href="mailto:beebs@gmail.com"
         target="_blank">
         beebs@gmail.com
@@ -62,11 +61,9 @@
     <div class="w-100">
       <span class="d-flex flex-column-gap-0-5 align-items-center">
         <Icon icon="ic:round-phone" style="color: white" />
-        <p class="m-0 p-0 fs-headline-md fw-semi-bold clr-white">Телефон</p>
+        <p class="m-0 p-0 fs-title-md fw-semi-bold clr-white">Телефон</p>
       </span>
-      <p class="fs-headline-sm clr-white d-block p-0 m-0 mt-1">
-        +7 812 240-05-13
-      </p>
+      <p class="fs-body-lg clr-white d-block p-0 m-0 mt-1">+7 812 240-05-13</p>
     </div>
   </div>
 </ContactForm>

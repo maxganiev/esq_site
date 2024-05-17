@@ -39,11 +39,17 @@
     <ul
       in:fade={{ duration: 400 }}
       out:fade={{ duration: 400 }}
-      class="dropdown-menu d-flex flex-column-gap-1 flex-row-gap-0-5 {dropdownMenuClasses
+      class="dropdown-menu d-grid flex-column-gap-1 flex-row-gap-1 bg-clr-green-dark-mid-opacity flex-row-gap-0-5 {dropdownMenuClasses
         .map((c) => c)
-        .join(' ')} flex-wrap rounded-bottom">
+        .join(' ')} flex-wrap">
       {#each menuItems as item}
-        <li class="col-md-5 col-sm-12 px-2 py-3">
+        <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+        <li
+          class="p-2"
+          on:click|self={(e) => {
+            e.target.firstElementChild.click();
+            toggleDropdown();
+          }}>
           <a class="w-100 h-100" href="/category{item.href}">{item.name}</a>
         </li>
       {/each}
@@ -67,6 +73,8 @@
 
     .dropdown-menu {
       backdrop-filter: blur(20px);
+      grid-template-columns: repeat(2, 1fr);
+      border-radius: 0 0 1rem 1rem;
     }
   }
 </style>

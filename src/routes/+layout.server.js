@@ -13,7 +13,7 @@ export const load = async ({}) => {
         /**@type {Number | undefined}*/
         country_id = undefined;
 
-      if (curr.store_id === 13) {
+      if (curr.store_id === 13 || curr.store_id === 14) {
         country_id = 1;
         country_name = 'Казахстан';
       } else if (curr.store_id === 24) {

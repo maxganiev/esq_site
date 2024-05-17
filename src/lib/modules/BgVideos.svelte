@@ -94,7 +94,7 @@
     <BgVideo {src} thumbnail={thumbnails[index]}>
       <div
         slot="custom-content"
-        class="bg-video-content pos-a w-30 d-flex flex-column justify-content-center rounded-3 p-4 bg-clr-seawave-dark"
+        class="bg-video-content pos-a d-flex flex-column justify-content-center rounded-3 p-4 bg-clr-green-dark-shaded w-30"
         bind:this={contentEls[index]}>
         <p class="mb-0 fs-display-md fw-semi-bold clr-white">
           {#if contentElsViewStatus.length > 0}

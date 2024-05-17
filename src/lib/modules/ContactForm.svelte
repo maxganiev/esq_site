@@ -1,6 +1,7 @@
 <script>
   import AlertBadge from '$lib/components/AlertBadge.svelte';
   import Form from '$lib/components/Form.svelte';
+  import GutterMain from '$lib/components/gutters/GutterMain.svelte';
   import { globals } from '$lib/globals';
   import { alert } from '$lib/utils/alert';
 
@@ -26,42 +27,51 @@
   <AlertBadge type={_alert.type} content={_alert.msg} />
 {/if}
 
-<div
-  class="w-100 h-75-vh d-flex align-items-center bg-clr-white-beige pos-r"
-  id="contact-form">
-  <div class="d-flex w-100 bg-clr-black-gray p-5-rem">
-    <div class="d-flex flex-column h-100 flex-0-4 flex-row-gap-6">
-      <div class="d-flex w-80 mx-auto flex-column-gap-1">
-        <h3 class="fs-display-sm clr-white fw-semi-bold d-block w-80">
-          Остались вопросы? Перезвоним в удобное для Вас время
-        </h3>
-        <img
-          src="{globals.imagePath}sea-arrow-right.png"
-          alt="arrow"
-          class="object-fit-contain w-20 align-self-start" />
-      </div>
+<div class="w-100 pos-r" id="contact-form">
+  <div class="w-100 bg-clr-black-gray">
+    <GutterMain classList={['d-flex']}>
+      <div class="d-flex flex-column w-50 justify-content-between">
+        <div class="d-flex flex-column-gap-2">
+          <h3 class="fs-headline-lg clr-white fw-semi-bold d-block w-60">
+            Остались вопросы? <br />
+            Перезвоним в удобное для Вас время
+          </h3>
+          <img
+            src="{globals.imagePath}sea-arrow-right.png"
+            alt="arrow"
+            class="object-fit-contain w-20 align-self-start" />
+        </div>
 
-      <slot name="contact-details" />
-    </div>
-    <div class="pos-a elcom-logo-rotated w-25">
-      <img
-        src="{globals.imagePath}e.png"
-        alt="elcom logo"
-        class="object-fit-contain w-100" />
-    </div>
-    <div class="d-flex h-100 flex-0-6 align-self-center">
-      <Form
-        class="d-flex flex-column w-80 flex-row-gap-1"
-        {submitTimeout}
-        {onSubmit} />
-    </div>
+        <slot name="contact-details" />
+      </div>
+      <div
+        class="pos-a w-50 h-100 pointer-none d-flex align-items-center elcom-logo-rotated">
+        <img
+          src="{globals.imagePath}e.png"
+          alt="elcom logo"
+          class="object-fit-contain" />
+      </div>
+      <div class="d-flex w-50 align-self-center">
+        <Form
+          class="d-flex flex-column w-100 flex-row-gap-1"
+          {submitTimeout}
+          {onSubmit} />
+      </div>
+    </GutterMain>
   </div>
 </div>
 
+<div style="height: 2rem;" class="w-100 bg-clr-white-beige"></div>
+
 <style lang="scss" scoped>
   .elcom-logo-rotated {
-    pointer-events: none;
-    bottom: 5%;
-    left: 25%;
+    width: calc(50% - 6rem) !important;
+    height: calc(100% - 6rem) !important;
+    justify-content: flex-end;
+
+    img {
+      width: 50%;
+      max-width: 450px;
+    }
   }
 </style>

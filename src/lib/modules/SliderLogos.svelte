@@ -1,6 +1,7 @@
 <script>
   import SliderLoop from '$lib/components/SliderLoop.svelte';
-  import GutterMain from '$lib/components/gutters/GutterMain.svelte';
+  import GutterX from '$lib/components/gutters/GutterX.svelte';
+  import GutterY from '$lib/components/gutters/GutterY.svelte';
   import { globals } from '$lib/globals';
 
   const imgPath = globals.imagePath + 'logo/',
@@ -22,14 +23,21 @@
     ];
 </script>
 
-<div
-  class="w-100 h-30-vh bg-clr-white-beige d-flex flex-column justify-content-center">
-  <GutterMain classList={['mb-3']}>
-    <h4 class="fs-headline-lg mb-0">Нам доверяют более 199 клиентов</h4>
-  </GutterMain>
+<GutterY classList={['bg-clr-white-beige ']}>
+  <div class="w-100 h-30-vh d-flex flex-column justify-content-center">
+    <GutterX>
+      <h4 class="fs-headline-lg mb-5">Нам доверяют более 199 клиентов</h4>
+    </GutterX>
 
-  <SliderLoop
-    {images}
-    slideClasses={['bg-clr-white-light', 'w-100', 'h-100', 'p-3', 'rounded-3']}
-    sliderWrapperClasses={['flex-0-3']} />
-</div>
+    <SliderLoop
+      {images}
+      slideClasses={[
+        'bg-clr-white-light',
+        'w-100',
+        'h-100',
+        'p-3',
+        'rounded-3',
+      ]}
+      sliderWrapperClasses={['flex-0-3']} />
+  </div>
+</GutterY>

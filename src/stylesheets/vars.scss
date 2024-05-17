@@ -1,16 +1,16 @@
 $index: calc(1vmin + 1vmax);
 
 $font-sizes: (
-  'display-lg': calc($index * 2.6),
-  'display-md': calc($index * 1.8),
+  'display-lg': calc(2.8vmax + 4.6vmin),
+  'display-md': calc(1.4vmax + 2vmin),
   'display-sm': calc($index * 1.2),
   //
-  'headline-lg': calc($index * 0.85),
+  'headline-lg': calc(1.1vmax + 1.5vmin),
   'headline-md': calc($index * 0.75),
-  'headline-sm': calc($index * 0.55),
+  'headline-sm': calc(0.5vmax + 0.65vmin),
   //
   'title-lg': 1rem,
-  'title-md': calc($index * 0.7),
+  'title-md': calc(0.85vmax + 0.65vmin),
   'title-sm': 0.6rem,
   //
   'label-lg': 1rem,
@@ -48,15 +48,18 @@ $colors: (
   'white-gray': #e6e6e6,
 
   'green-dark': #051618,
+  'green-dark-shaded': #0516181a,
   'green-dark-low-opacity': rgba(5, 22, 24, 0.1),
+  'green-dark-mid-opacity': rgba(5, 22, 24, 0.6),
   'seawave-soft': #00d1f2,
-  'seawave-dark': #0516181a,
   'cyan': #00798c,
 
   'orange': #ff661c,
 
   'black-gray': #3a3f40,
   'light-gray': #f9f8f7,
+  'dark-light': #8c8781,
+  'gray-disabled': #aaaaaa,
 );
 @each $key, $value in $colors {
   .bg-clr-#{$key} {
@@ -95,6 +98,8 @@ $sizes: (
   '80': 80%,
   '85': 85%,
   '95': 95%,
+  '35-vw': 35vw,
+  '45-vw': 45vw,
   '50-vw': 50vw,
   '65-vw': 65vw,
   '5-vh': 5vh,
@@ -124,6 +129,7 @@ $spaces: (
   '2-rem': 2rem,
   '4-rem': 4rem,
   '5-rem': 5rem,
+  '6-rem': 6rem,
   '20-vh': 20vh,
 );
 @each $key, $value in $spaces {
@@ -152,6 +158,20 @@ $spaces: (
   }
   .ms-#{$key} {
     margin-left: $value !important;
+  }
+  .pb-#{$key} {
+    padding-bottom: $value !important;
+  }
+  .mb-#{$key} {
+    margin-bottom: $value !important;
+  }
+  .py-#{$key} {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+  .my-#{$key} {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
   }
 }
 
@@ -189,6 +209,7 @@ $flex-gap-options: (
 }
 
 $flex-options: (
+  '0-25': 0.25,
   '0-3': 0.3,
   '0-4': 0.4,
   '0-5': 0.5,
@@ -218,6 +239,11 @@ $positioning-options: (
   left: 0;
 }
 
+.top-right {
+  top: 0;
+  right: 0;
+}
+
 .bottom-left {
   bottom: 0;
   left: 0;
@@ -234,6 +260,10 @@ $positioning-options: (
 
 .z-1 {
   z-index: 1;
+}
+
+.bottom {
+  bottom: 0;
 }
 
 $radius-options: (
@@ -269,7 +299,7 @@ $opacity-options: (
 }
 
 $ratios-options: (
-  '1x1': 1/1,
+  '1x1': calc(1 / 1),
 );
 @each $key, $value in $ratios-options {
   .ratio-#{$key} {

@@ -8,7 +8,7 @@
   const path = globals.imagePath + 'categories/';
 </script>
 
-<div class="w-100 h-100-vh bg-clr-white-beige pt-20-vh pb-4">
+<div class="w-100 h-100-vh bg-clr-white-beige">
   <GutterMain classList={['categories', 'flex-column-gap-1', 'flex-row-gap-1']}>
     <h2
       class="clr-green-dark fs-display-md fw-semi-bold"
@@ -25,11 +25,12 @@
             href="category{category.href}"
             class="d-block w-100 h-100 rounded-3 category-link-hover"
             style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover;">
-            <span class="clr-white fs-headline-md d-block pt-3 ps-3">
+            <span
+              class="clr-white fs-headline-md lh-sm w-90 text-wrap d-block pt-3 ps-3">
               {category.name}
             </span>
             <button
-              class="btn btn-sm rounded-circle ratio-1x1 bg-clr-white pos-a bottom-right me-2 mb-2 o-0">
+              class="btn btn-sm rounded-circle ratio-1x1 bg-clr-white pos-a me-2 mb-2 o-0 d-flex justify-content-center align-items-center btn-arrow-hover">
               <Icon
                 icon="lucide:arrow-right"
                 width="1.2rem"
@@ -47,11 +48,12 @@
             href="category{category.href}"
             class="d-block w-100 h-100 rounded-3 category-link-hover"
             style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image})">
-            <span class="clr-white fs-headline-md d-block pt-3 ps-3">
+            <span
+              class="clr-white fs-headline-md lh-sm w-90 text-wrap d-block pt-3 ps-3">
               {category.name}
             </span>
             <button
-              class="btn btn-sm rounded-circle ratio-1x1 bg-clr-white pos-a bottom-right me-2 mb-2 o-0">
+              class="btn btn-sm rounded-circle ratio-1x1 bg-clr-white pos-a me-2 mb-2 o-0 d-flex justify-content-center align-items-center btn-arrow-hover">
               <Icon
                 icon="lucide:arrow-right"
                 width="1.2rem"
@@ -66,7 +68,8 @@
           <a
             class="d-block w-100 h-100 rounded-3 bg-clr-white"
             href={category.href}>
-            <span class="clr-green-dark fs-headline-md d-block pt-3 ps-3">
+            <span
+              class="clr-green-dark fs-headline-md lh-sm w-90 text-wrap d-block pt-3 ps-3">
               {category.name}
             </span>
 
@@ -74,7 +77,7 @@
               icon="lucide:arrow-right"
               width="1.2rem"
               height="1.2rem"
-              class="clr-orange pos-a bottom-right me-3 mb-3" />
+              class="clr-orange pos-a  me-3 mb-3  btn-arrow-hover" />
           </a>
         </div>
       {:else}
@@ -83,11 +86,12 @@
             href="category{category.href}"
             class="d-block w-100 h-100 rounded-3 category-link-hover"
             style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover;">
-            <span class="clr-white fs-headline-md d-block pt-3 ps-3">
+            <span
+              class="clr-white fs-headline-md lh-sm w-90 text-wrap d-block pt-3 ps-3">
               {category.name}
             </span>
             <button
-              class="btn btn-sm rounded-circle ratio-1x1 bg-clr-white pos-a bottom-right me-2 mb-2 o-0">
+              class="btn btn-sm rounded-circle ratio-1x1 bg-clr-white pos-a me-2 mb-2 o-0 d-flex justify-content-center align-items-center btn-arrow-hover">
               <Icon
                 icon="lucide:arrow-right"
                 width="1.2rem"
@@ -102,6 +106,11 @@
 </div>
 
 <style lang="scss" scoped>
+  :global(.btn-arrow-hover) {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
   :global(.categories) {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

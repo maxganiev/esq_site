@@ -13,29 +13,49 @@
       line: [],
       /**@desc {Max number of timeline dots per viewport}*/
       maxTimelineIdx: 2,
-      setLine(slideIdx = 0) {
-        this.line = [0, 1, 2].map((dot) => {
-          const o = {};
 
-          let currentDot;
+      setLine() {
+        this.line = timeline
+          .slice(0, this.maxTimelineIdx + 1)
+          .map((o) =>
+            Object.assign(
+              { ...o },
+              { isActive: timeline[currentSlideIdx].eventDate === o.eventDate },
+            ),
+          );
+        events = events;
+      },
 
-          if (scrollLeftwards)
-            currentDot =
-              slideIdx > this.maxTimelineIdx
-                ? timeline[slideIdx - this.maxTimelineIdx + dot] || null
-                : timeline[dot];
-          else
-            currentDot =
-              slideIdx > this.maxTimelineIdx
-                ? timeline[dot + this.maxTimelineIdx + 1] || null
-                : timeline[dot];
+      updateLine() {
+        if (scrollLeftwards) {
+          const next =
+            timeline[
+              timeline.findIndex(
+                (o) =>
+                  o.eventDate === this.line[this.line.length - 1].eventDate,
+              ) + 1
+            ];
+          if (next) {
+            this.line.shift();
+            this.line.push(next);
+          }
+        } else {
+          const prev =
+            timeline[
+              timeline.findIndex(
+                (o) => o.eventDate === this.line[0].eventDate,
+              ) - 1
+            ];
+          if (prev) {
+            this.line.pop();
+            this.line.unshift(prev);
+          }
+        }
 
-          o.eventDate = currentDot?.eventDate || '';
-          o.eventDesc = currentDot?.eventDesc || '';
-          o.isActive = timeline[currentSlideIdx].eventDate === o.eventDate;
-
-          return o;
-        });
+        const current = timeline[currentSlideIdx];
+        this.line.forEach(
+          (o) => (o.isActive = o.eventDate === current.eventDate),
+        );
 
         events = events;
       },
@@ -54,8 +74,7 @@
     isScrolling = slideIdx === -1;
     if (!isScrolling) {
       currentSlideIdx = slideIdx;
-      events.setLine(currentSlideIdx);
-      //console.log(events.line.map((n) => n.eventDate));
+      events.updateLine();
     }
   }
 
@@ -67,10 +86,8 @@
     sliderEl.scrollBy(-1, 0);
   }
 
-  $: lastSlideInView = currentSlideIdx === timeline.length - 1;
-
   onMount(() => {
-    events.setLine(currentSlideIdx);
+    events.setLine();
   });
 </script>
 
@@ -90,7 +107,7 @@
   </div>
 
   <div
-    class="w-30 pos-a pb-4 d-flex flex-column justify-content-center align-items-center event-desc-holder">
+    class="w-30 pos-a d-flex flex-column justify-content-center align-items-center event-desc-holder">
     <div
       class="w-100 p-4 rounded-3 d-flex flex-column justify-content-center event-desc-body">
       <p class="mb-0 fs-display-sm fw-semi-bold">
@@ -106,30 +123,27 @@
 
   <div
     class="w-100 h-5-vh d-flex flex-column justify-content-center pos-a timeline-wrapper">
-    <div class="w-100 d-flex align-items-end text-center timeline-axis d-flex">
-      <div
-        class="flex-grow-0-25 event-holder o-{currentSlideIdx <
-        events.line.length
-          ? '0'
-          : '1'}">
-      </div>
-
+    <div
+      class="w-100 d-grid align-items-end text-center timeline-axis"
+      style="grid-template-columns: 10% 26.6% 26.6% 26.6% 10%;">
+      <div class="event-holder o-{currentSlideIdx < 1 ? '0' : '1'}"></div>
       {#each events.line as ev, index}
         <div
           class="d-flex flex-column align-items-{(function () {
             if (index === 0) return 'start';
             else if (index === 1) return 'center';
             else return 'end';
-          })()} flex-row-gap-0-5 flex-grow-1 event-holder">
+          })()} flex-row-gap-0-5 event-holder">
           <div
-            class="d-flex flex-column align-items-center"
-            style="transform: translate({currentSlideIdx <=
-            events.maxTimelineIdx
-              ? '-50%'
-              : '50%'}, -80%);">
+            class="d-flex align-items-end {index !== 2
+              ? 'flex-row-reverse'
+              : ''}"
+            style="transform: translateY(-60%);">
             <span
-              class="clr-white ev-date o-{isScrolling ? '0-3' : '1'}"
-              style="transition: opacity 0.4s ease-in;">
+              class="clr-white ev-date {isScrolling &&
+              ev.eventDate === timeline[currentSlideIdx].eventDate
+                ? 'is-scrolled'
+                : ''} {index === events.maxTimelineIdx ? 'last-point' : ''}">
               {ev.eventDate}
             </span>
 
@@ -142,9 +156,7 @@
         </div>
       {/each}
       <div
-        class="flex-grow-0-25 event-holder o-{(scrollLeftwards &&
-          lastSlideInView) ||
-        (!scrollLeftwards && currentSlideIdx > events.maxTimelineIdx)
+        class="event-holder o-{currentSlideIdx === timeline.length - 1
           ? '0'
           : '1'}">
       </div>
@@ -152,15 +164,15 @@
   </div>
 
   <div
-    class="w-100 h-10-vh bg-clr-white d-flex align-items-center justify-content-center flex-column-gap-0-5">
+    class="w-100 h-10-vh bg-clr-white-beige d-flex align-items-center justify-content-center flex-column-gap-0-5">
     <button
-      class="btn btn-sm outlined bg-clr-transparent hover-bg-clr-seawave-dark shadow-none"
+      class="btn btn-sm outlined bg-clr-white rounded-circle d-flex justify-content-center align-items-center ratio-1x1 hover-bg-clr-green-dark-shaded shadow-none"
       disabled={currentSlideIdx === 0 || isScrolling}
       on:click={scrollLeft}>
       <Icon icon="lucide:arrow-right" style="color: black; rotate: -180deg;" />
     </button>
     <button
-      class="btn btn-sm outlined bg-clr-transparent hover-bg-clr-seawave-dark shadow-none"
+      class="btn btn-sm outlined bg-clr-white rounded-circle d-flex justify-content-center align-items-center ratio-1x1 hover-bg-clr-green-dark-shaded shadow-none"
       disabled={currentSlideIdx === timeline.length - 1 || isScrolling}
       on:click={scrollRight}>
       <Icon icon="lucide:arrow-right" style="color: black" />
@@ -170,8 +182,8 @@
 
 <style lang="scss" scoped>
   %height-inherit {
-    height: inherit;
-    min-height: inherit;
+    height: 70vh;
+    //min-height: inherit;
   }
 
   .slider-carousel {
@@ -179,7 +191,7 @@
 
     .slider-body {
       @extend %height-inherit;
-      overflow-x: scroll;
+      overflow-x: hidden;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
@@ -191,7 +203,8 @@
     }
 
     .event-desc-holder {
-      left: 5vw;
+      left: 9vw;
+      bottom: 22.5vh;
 
       .event-desc-body {
         backdrop-filter: blur(20px);
@@ -205,6 +218,23 @@
         .event-holder {
           border-top: 2px #f9f8f7 solid;
           min-height: 50px;
+
+          .ev-date {
+            transform: translate(-75%, -100%);
+            transition: all 0.4s ease-in;
+
+            &.is-scrolled {
+              transform: translate(-75%, -100%) scale(1.4);
+            }
+
+            &.last-point {
+              transform: translate(75%, -100%);
+            }
+
+            &.is-scrolled.last-point {
+              transform: translate(75%, -100%) scale(1.4);
+            }
+          }
 
           .ev-marker {
             width: 2.2vw;

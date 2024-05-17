@@ -33,9 +33,9 @@
         </LinkOrangePill>
       </div>
 
-      <div class="w-45 h-100 d-flex">
+      <div class="w-45 h-100 d-flex pos-r">
         <img
-          class="object-fit-contain w-50 h-100"
+          class="object-fit-contain bg-img-absolute"
           src="/assets/images/esq_motor.png"
           alt="esq motor" />
       </div>
@@ -48,7 +48,7 @@
         {#each data.category.key_features.filter((/** @type {{ type_id: Number, label: String | null, text: String | null }} */ feat) => feat.type_id === 1) as feat (feat.id)}
           <div class="col-md-4 col-sm-6 d-flex flex-column clr-green-dark">
             <Icon
-              icon="el:check"
+              icon="lucide:square-check-big"
               width="1.6rem"
               height="1.6rem"
               style="color: #1A747E" />
@@ -97,5 +97,13 @@
     bottom: -5vh;
     right: 5vw;
     transform: rotate(-5deg);
+  }
+
+  .bg-img-absolute {
+    width: 50vw !important;
+    position: absolute;
+    top: -10vh;
+    left: -10vw;
+    height: 50vh !important;
   }
 </style>

@@ -8,7 +8,7 @@
 <a
   href="https://b2b.elcomspb.ru/"
   target="_blank"
-  class="d-flex align-items-center justify-content-center border border-white rounded-pill py-2 px-4 text-nowrap {hovered
+  class="d-flex align-items-center justify-content-center border border-white rounded-pill fw-semi-bold py-2 px-4 text-nowrap {hovered
     ? 'filled'
     : 'bg-clr-transparent'}"
   on:mouseover={() => (hovered = true)}

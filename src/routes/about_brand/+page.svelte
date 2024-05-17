@@ -3,6 +3,9 @@
   import { onMount } from 'svelte';
   import { Counter } from '$lib/utils/counter';
   import Slider from '$lib/components/Slider.svelte';
+  import GutterMain from '$lib/components/gutters/GutterMain.svelte';
+  import GutterY from '$lib/components/gutters/GutterY.svelte';
+  import GutterX from '$lib/components/gutters/GutterX.svelte';
 
   const elliplsis = [
       { id: 1, left: '15vw', width: '5vw', rotate: '180deg' },
@@ -118,8 +121,8 @@
 </svelte:head>
 
 <div class="d-flex flex-column w-100">
-  <div class="d-flex w-100 align-items-center bg-clr-white-beige h-40-vh">
-    <div class="flex-0-6 px-4-rem">
+  <div class="d-flex align-items-center w-100 bg-clr-white-beige h-40-vh">
+    <div class="flex-0-6 px-6-rem">
       <h2 class="clr-green-dark fw-semi-bold fs-display-sm">
         ESQ — передовой производитель промышленной электроники с 2009 года
       </h2>
@@ -144,29 +147,31 @@
     </div>
   </div>
 
-  <div class="row align-items-center bg-clr-white-gray h-30-vh px-4-rem">
-    {#each Object.keys(customContent) as key}
-      <div class="col-sm-6 col-md-3">
-        <span class="clr-seawave-soft fw-semi-bold fs-display-sm text-nowrap">
-          {new Intl.NumberFormat('ru-RU').format(
-            counterVals[key].counter.startValue.toFixed(0),
-          )}
-          {customContent[key].lgPhrase}
-        </span>
-        <p class="mt-2 fs-body-lg clr-green-dark">
-          {customContent[key].smPhrase}
-        </p>
-      </div>
-    {/each}
+  <div class="bg-clr-white-gray h-30-vh">
+    <GutterMain classList={['row', 'align-items-center']}>
+      {#each Object.keys(customContent) as key}
+        <div class="col-sm-6 col-md-3">
+          <span class="clr-cyan fw-semi-bold fs-display-sm text-nowrap">
+            {new Intl.NumberFormat('ru-RU').format(
+              counterVals[key].counter.startValue.toFixed(0),
+            ) + (key !== '1' ? '' : '+')}
+            {customContent[key].lgPhrase}
+          </span>
+          <p class="mt-2 fs-body-lg clr-green-dark">
+            {customContent[key].smPhrase}
+          </p>
+        </div>
+      {/each}
+    </GutterMain>
   </div>
 
-  <div class="d-flex h-50-vh bg-clr-white px-4-rem flex-column">
-    <h3 class="fs-headline-lg clr-green-dark fw-semi-bold py-5">
-      История развития
-    </h3>
+  <GutterY classList={['bg-clr-white-beige ']}>
+    <div class="d-flex flex-column">
+      <h3 class="fs-headline-lg clr-green-dark fw-semi-bold pb-2-rem ps-6-rem">
+        История развития
+      </h3>
 
-    <Slider {timeline} />
-  </div>
-
-  <div class="w-100 h-5-vh bg-clr-white-beige"></div>
+      <Slider {timeline} />
+    </div>
+  </GutterY>
 </div>

@@ -90,7 +90,7 @@
     class="clr-green-dark pos-a chevron-autocomplete pointer-none" />
   {#if itemsFound.length > 0}
     <ul
-      class="pos-a top-left p-2 mt-4 w-100 {!showItems
+      class="pos-a top-left p-2 mt-5 w-100 {!showItems
         ? 'd-none'
         : ''} z-1 rounded-2 list-items">
       <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->

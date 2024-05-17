@@ -148,7 +148,7 @@
   </div>
 
   <div class="bg-clr-white-gray h-30-vh">
-    <GutterMain classList={['row', 'align-items-center']}>
+    <GutterMain classList={['row']}>
       {#each Object.keys(customContent) as key}
         <div class="col-sm-6 col-md-3">
           <span class="clr-cyan fw-semi-bold fs-display-sm text-nowrap">

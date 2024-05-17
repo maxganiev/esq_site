@@ -60,10 +60,10 @@
 
     <div data-description="Empty DIV to add spaces between cols"></div>
 
-    <ul class="list fs-body-md">
+    <ul class="list fs-headline-sm">
       <li class="fs-body-lg clr-gray-disabled">Оборудование</li>
       {#each $categories.slice(0, 7) as category}
-        <li class="fs-headline-sm">
+        <li>
           <a class="clr-white" href={'/category' + category.href}>
             {category.name}
           </a>
@@ -71,7 +71,7 @@
       {/each}
     </ul>
 
-    <ul class="list fs-body-md">
+    <ul class="list fs-headline-sm">
       <li class="o-0">Оборудование</li>
       {#each $categories.slice(7, 12) as category}
         <li>

@@ -125,7 +125,7 @@
     class="w-100 h-5-vh d-flex flex-column justify-content-center pos-a timeline-wrapper">
     <div
       class="w-100 d-grid align-items-end text-center timeline-axis"
-      style="grid-template-columns: 10% 26.6% 26.6% 26.6% 10%;">
+      style="grid-template-columns: 6rem 1fr 1fr 1fr 6rem;">
       <div class="event-holder o-{currentSlideIdx < 1 ? '0' : '1'}"></div>
       {#each events.line as ev, index}
         <div
@@ -203,7 +203,7 @@
     }
 
     .event-desc-holder {
-      left: 9vw;
+      left: 6rem;
       bottom: 22.5vh;
 
       .event-desc-body {

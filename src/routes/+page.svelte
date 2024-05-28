@@ -28,12 +28,11 @@
       </LinkOrangePill>
     </div>
 
-    <div
-      class="d-flex align-items-center justify-content-end pos-a bottom z-n-1">
+    <div class="d-flex align-items-center justify-content-end w-40 pos-r">
       <img
         src="assets/images/esq_motor.png"
         alt="esq motor"
-        class="w-60 object-fit-contain z-n-1" />
+        class="pos-a w-50-vw ratio-1x1 object-fit-contain z-n-1" />
     </div>
   </GutterMain>
 </div>

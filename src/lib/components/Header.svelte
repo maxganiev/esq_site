@@ -36,7 +36,11 @@
       <ul
         class="list w-100 h-100 mx-auto d-flex justify-content-between w-65 align-items-center ps-0 flex-wrap"
         bind:offsetWidth={listOffsetWidth}>
-        <li><img src="{globals.imagePath}logo/esq.svg" alt="esq_logo" /></li>
+        <li>
+          <a href="/">
+            <img src="{globals.imagePath}logo/esq.svg" alt="esq_logo" />
+          </a>
+        </li>
 
         {#each crumbs as crumb, index}
           <li

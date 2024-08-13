@@ -26,7 +26,7 @@
 <GutterY classList={['bg-clr-white-beige ']}>
   <div class="w-100 h-30-vh d-flex flex-column justify-content-center">
     <GutterX>
-      <h4 class="fs-headline-lg mb-5">Нам доверяют более 199 клиентов</h4>
+      <h4 class="fs-headline-lg mb-5">Нам доверяют</h4>
     </GutterX>
 
     <SliderLoop

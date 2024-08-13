@@ -3,11 +3,21 @@
 </script>
 
 <div {...$$restProps} class="col-md-12 px-3 d-flex flex-column-gap-1">
-  <div
-    class="w-45 h-100 rounded-3"
-    style="background: url('/assets/images/categories/{category.image}') center center/cover;">
+  <div class="h-100 rounded-3 w-30 pos-r">
+    {#if category.promo_desc}
+      <div
+        class="promo-desc-wrapper pos-a px-2 py-1 w-100 bg-clr-green-dark-shaded rounded-3">
+        <small class="clr-white fs-body-md fw-regular lh-sm">
+          {category.promo_desc}
+        </small>
+      </div>
+    {/if}
+    <img
+      src={'/assets/images/categories/' + category.image}
+      class="w-100 h-100"
+      alt="asset" />
   </div>
-  <div class="w-45 h-100 rounded-3 bg-clr-white clr-green-dark p-4">
+  <div class="h-100 rounded-3 bg-clr-white clr-green-dark p-4 w-fit-content">
     <h3 class="fs-body-md fw-semi-bold mb-2">{category.name}</h3>
     {#if category.key_features && category.key_features.length > 0}
       {@const secondaryKeyFeatures = category.key_features.filter(
@@ -18,10 +28,12 @@
 
         {#if categoryFeat.text && categoryFeat.text.length > 0}
           <ul
-            class="list list-dashed fs-body-sm lh-sm"
+            class="list list-dashed fs-body-sm lh-sm text-wrap w-40-vw"
             style="padding-left: 10px;">
             {#each categoryFeat.text.split('\n') as text}
-              <li>{text}</li>
+              <li>
+                {text}
+              </li>
             {/each}
           </ul>
         {/if}
@@ -39,3 +51,13 @@
     {/if}
   </div>
 </div>
+
+<style lang="scss" scoped>
+  .promo-desc-wrapper {
+    left: 2.5%;
+    top: 4.5%;
+    max-width: 320px;
+    backdrop-filter: blur(20px);
+    box-shadow: -10px 0px 0px -5px #00d1f2;
+  }
+</style>

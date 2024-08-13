@@ -2,6 +2,7 @@
   import LinkOrangePill from '$lib/components/buttons/LinkOrangePill.svelte';
   import CategoryDesc from '$lib/components/category/CategoryDesc.svelte';
   import GutterMain from '$lib/components/gutters/GutterMain.svelte';
+  import GutterX from '$lib/components/gutters/GutterX.svelte';
   import Icon from '@iconify/svelte';
 
   export let data;
@@ -20,7 +21,7 @@
     <div class="w-100 h-100 pos-a top-left bg-clr-green-dark z-n-1">
       <div class="ellipse"></div>
     </div>
-    <GutterMain classList={['d-flex']}>
+    <GutterX classList={['d-flex', 'align-items-end', 'pb-6-rem']}>
       <div class="d-flex flex-column w-45 h-100">
         <h2 class="fs-display-sm">{data.category.name}</h2>
         {#if data.category.description}
@@ -33,18 +34,19 @@
         </LinkOrangePill>
       </div>
 
-      <div class="w-45 h-100 d-flex pos-r">
+      <div class="w-45 h-100 d-flex pos-r bg-img-wrapper">
         <img
-          class="object-fit-contain bg-img-absolute"
-          src="/assets/images/esq_motor.png"
-          alt="esq motor" />
+          class="object-fit-contain bg-img w-100"
+          src={'/assets/images/categories/' +
+            (data.category.secondary_image || data.category.image)}
+          alt="asset" />
       </div>
-    </GutterMain>
+    </GutterX>
   </div>
 
   <div class="w-100 bg-clr-white-beige py-5">
     <GutterMain>
-      <div class="row">
+      <div class="row mx-0">
         {#each data.category.key_features.filter((/** @type {{ type_id: Number, label: String | null, text: String | null }} */ feat) => feat.type_id === 1) as feat (feat.id)}
           <div class="col-md-4 col-sm-6 d-flex flex-column clr-green-dark">
             <Icon
@@ -59,7 +61,7 @@
         {/each}
       </div>
 
-      <div class="row flex-row-gap-1 my-5 py-5">
+      <div class="row flex-row-gap-1 my-5 py-5 mx-0">
         {#if data.subCategories && data.subCategories.length > 0}
           {#each data.subCategories as subCat (subCat.id)}
             <CategoryDesc category={subCat} />
@@ -99,11 +101,12 @@
     transform: rotate(-5deg);
   }
 
-  .bg-img-absolute {
-    width: 50vw !important;
-    position: absolute;
-    top: -10vh;
-    left: -10vw;
-    height: 50vh !important;
+  .bg-img-wrapper {
+    transform: translateY(15%);
+    transform-origin: 0 0;
+
+    .bg-img {
+      max-height: 350px;
+    }
   }
 </style>

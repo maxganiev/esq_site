@@ -20,7 +20,7 @@
   <GutterMain classList={['d-flex']}>
     <div class="d-flex flex-column w-60">
       <h1 class="fs-display-lg fw-semi-bold clr-white">
-        ESQ — передовой производитель промышленной электроники
+        ESQ — ведущий производитель промышленной электроники
       </h1>
 
       <LinkOrangePill>
@@ -62,7 +62,9 @@
         <Icon icon="ic:round-phone" style="color: white" />
         <p class="m-0 p-0 fs-title-md fw-semi-bold clr-white">Телефон</p>
       </span>
-      <p class="fs-body-lg clr-white d-block p-0 m-0 mt-1">+7 812 240-05-13</p>
+      <p class="fs-body-lg clr-white d-block p-0 m-0 mt-1">
+        +7 (812) 320-88-81
+      </p>
     </div>
   </div>
 </ContactForm>

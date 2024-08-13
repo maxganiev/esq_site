@@ -66,7 +66,7 @@
           <li>
             <span class="d-inline-block text-nowrap align-middle">
               <Icon icon="lucide:phone" style="color: #051618" />
-              <p class="d-inline ps-2">+7 812 240-05-13</p>
+              <p class="d-inline ps-2">+7 (812) 320-88-81</p>
             </span>
           </li>
           <li>

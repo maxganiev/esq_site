@@ -484,6 +484,14 @@
   min-height: 35vw !important;
 }
 
+.w-40-vw {
+  width: 40vw !important;
+}
+
+.h-40-vw {
+  min-height: 40vw !important;
+}
+
 .w-45-vw {
   width: 45vw !important;
 }

@@ -1,12 +1,16 @@
 import { PrismaClient } from '@prisma/client';
-import seedAllCategories from './seedAllCategories.js';
-import seedKeyFeatures from './seedKeyFeatures.js';
+import updateCategoryImages from './updateCategoryImages.js';
+import updateCategories from './updateCategories.js';
+import updateKeyFeatures from './updateKeyFeatures.js';
+import insertCategoryLinks from './insertCategoryLinks.js';
 
 const prisma = new PrismaClient();
 
 async function seed() {
-  await seedAllCategories(prisma);
-  await seedKeyFeatures(prisma);
+  // await updateCategoryImages(prisma);
+  // await updateCategories(prisma);
+  // await updateKeyFeatures(prisma);
+  await insertCategoryLinks(prisma);
 }
 
 seed()

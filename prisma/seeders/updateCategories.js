@@ -94,13 +94,13 @@ async function updateCategories(
     ],
   };
 
-  const queryUpdateSecondaryImage = `UPDATE category SET secondary_image = CASE ${updates.secondaryImagesAndPromoDesc
+  const queryUpdateSecondaryImage = `UPDATE Category SET secondary_image = CASE ${updates.secondaryImagesAndPromoDesc
       .map((item) => `WHEN id = ${item.id}  THEN '${item.secondary_image}'`)
       .join(' ')} ELSE secondary_image END`,
-    queryUpdatePromoDesc = `UPDATE category SET promo_desc = CASE ${updates.secondaryImagesAndPromoDesc
+    queryUpdatePromoDesc = `UPDATE Category SET promo_desc = CASE ${updates.secondaryImagesAndPromoDesc
       .map((item) => `WHEN id = ${item.id}  THEN '${item.promo_desc}'`)
       .join(' ')} ELSE promo_desc END`,
-    queryUpdateDescription = `UPDATE category SET description = CASE ${updates.descriptions
+    queryUpdateDescription = `UPDATE Category SET description = CASE ${updates.descriptions
       .map((item) => `WHEN id = ${item.id}  THEN '${item.description}'`)
       .join(' ')} ELSE description END`;
 

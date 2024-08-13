@@ -27,7 +27,7 @@ async function insertCategoryLinks(
     { id: 17, link: 'https://www.elcomspb.ru/retail/' },
   ];
 
-  const query = `UPDATE category SET link = CASE ${updates
+  const query = `UPDATE Category SET link = CASE ${updates
     .map((item) => `WHEN id = ${item.id}  THEN '${item.link}'`)
     .join(' ')} ELSE link END`;
   await prisma.$executeRawUnsafe(query);

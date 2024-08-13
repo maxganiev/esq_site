@@ -11,7 +11,7 @@ async function updateCategoryImages(
     { id: 12, image: 'motors_esq_pr.png' },
   ];
 
-  const query = `UPDATE category SET image = CASE ${images
+  const query = `UPDATE Category SET image = CASE ${images
     .map((item) => `WHEN id = ${item.id}  THEN '${item.image}'`)
     .join(' ')} ELSE image END`;
   await prisma.$executeRawUnsafe(query);

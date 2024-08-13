@@ -7,9 +7,9 @@ import insertCategoryLinks from './insertCategoryLinks.js';
 const prisma = new PrismaClient();
 
 async function seed() {
-  // await updateCategoryImages(prisma);
-  // await updateCategories(prisma);
-  // await updateKeyFeatures(prisma);
+  await updateCategoryImages(prisma);
+  await updateCategories(prisma);
+  await updateKeyFeatures(prisma);
   await insertCategoryLinks(prisma);
 }
 

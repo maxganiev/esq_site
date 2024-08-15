@@ -173,8 +173,6 @@
 
   <div
     class="w-100 h-10-vh bg-clr-white-beige d-flex align-items-center justify-content-center flex-column-gap-0-5">
-    {currentSlideIdx}
-    {f}
     <button
       class="btn btn-sm outlined bg-clr-white rounded-circle d-flex justify-content-center align-items-center ratio-1x1 hover-bg-clr-green-dark-shaded shadow-none"
       disabled={currentSlideIdx === 0 || isScrolling}

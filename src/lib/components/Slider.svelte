@@ -79,11 +79,19 @@
   }
 
   function scrollRight() {
-    sliderEl.scrollBy(1, 0);
+    sliderEl.scrollBy({
+      left: sliderEl.getBoundingClientRect().width,
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 
   function scrollLeft() {
-    sliderEl.scrollBy(-1, 0);
+    sliderEl.scrollBy({
+      left: -sliderEl.getBoundingClientRect().width,
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 
   onMount(() => {
@@ -94,7 +102,7 @@
 <div
   class="w-100 d-flex flex-column justify-content-center pos-r slider-carousel">
   <div
-    class="w-100 pos-r slider-body d-grid no-scrollbars"
+    class="w-100 pos-r slider-body d-grid no-scrollbars pointer-none no-select"
     style="grid-template-columns: repeat({timeline.length}, 100%);"
     bind:this={sliderEl}
     on:scroll={onScroll}>
@@ -165,6 +173,8 @@
 
   <div
     class="w-100 h-10-vh bg-clr-white-beige d-flex align-items-center justify-content-center flex-column-gap-0-5">
+    {currentSlideIdx}
+    {f}
     <button
       class="btn btn-sm outlined bg-clr-white rounded-circle d-flex justify-content-center align-items-center ratio-1x1 hover-bg-clr-green-dark-shaded shadow-none"
       disabled={currentSlideIdx === 0 || isScrolling}

@@ -1135,6 +1135,10 @@ body main {
   pointer-events: none !important;
 }
 
+.no-select {
+  user-select: none !important;
+}
+
 .list-dashed {
   list-style-type: " - " !important;
 }

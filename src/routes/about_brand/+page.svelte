@@ -77,41 +77,59 @@
     {
       id: 2,
       eventDate: 2010,
-      eventDesc:
-        'Выпуск частотных преобразователей ESQ. Открытие нового направления по автоматизации систем управления технологическими процессами (АСУ ТП)',
+      eventDesc: 'Вывод на рынок новой марки редукторов ESQа',
       bgImage: globals.imagePath + 'carousel/about/2.png',
     },
 
     {
       id: 3,
-      eventDate: 2007,
-      eventDesc:
-        'Выпуск частотных преобразователей ESQ. Открытие нового направления по автоматизации систем управления технологическими процессами (АСУ ТП)',
+      eventDate: 2012,
+      eventDesc: 'Выпуск консольных насосов ESQ типа К и КМ',
       bgImage: globals.imagePath + 'carousel/about/3.png',
     },
 
     {
       id: 4,
-      eventDate: 2009,
-      eventDesc:
-        'Выпуск частотных преобразователей ESQ. Открытие нового направления по автоматизации систем управления технологическими процессами (АСУ ТП)',
-      bgImage: globals.imagePath + 'carousel/about/1.png',
+      eventDate: 2013,
+      eventDesc: 'Начало продаж панелей оператора под маркой ESQ',
+      bgImage: globals.imagePath + 'carousel/about/4.png',
     },
 
     {
       id: 5,
-      eventDate: 2012,
+      eventDate: 2014,
       eventDesc:
-        'Выпуск частотных преобразователей ESQ. Открытие нового направления по автоматизации систем управления технологическими процессами (АСУ ТП)',
-      bgImage: globals.imagePath + 'carousel/about/2.png',
+        'Выпуск масляных шестеренных насосов ESQ типа NMSh-GP. Начало производства станций управления и защиты ESQ-CS',
+      bgImage: globals.imagePath + 'carousel/about/5.png',
     },
 
     {
       id: 6,
+      eventDate: 2015,
+      eventDesc: 'Начало производства шкафов управления ESQ-CS',
+      bgImage: globals.imagePath + 'carousel/about/6.png',
+    },
+
+    {
+      id: 7,
       eventDate: 2016,
+      eventDesc: 'Начало производства автоматической насосной станции ESQ В',
+      bgImage: globals.imagePath + 'carousel/about/7.png',
+    },
+
+    {
+      id: 8,
+      eventDate: 2018,
+      eventDesc: 'Выпуск насосов ESQ двустороннего входа типа Д',
+      bgImage: globals.imagePath + 'carousel/about/8.png',
+    },
+
+    {
+      id: 9,
+      eventDate: 2022,
       eventDesc:
-        'Выпуск частотных преобразователей ESQ. Открытие нового направления по автоматизации систем управления технологическими процессами (АСУ ТП)',
-      bgImage: globals.imagePath + 'carousel/about/3.png',
+        'Выпуск электродвигателей для систем аварийного дымоудаления серии ESQ FR и FR/V',
+      bgImage: globals.imagePath + 'carousel/about/9.png',
     },
   ];
 </script>

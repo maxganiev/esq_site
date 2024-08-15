@@ -191,7 +191,7 @@
 
     .slider-body {
       @extend %height-inherit;
-      overflow-x: hidden;
+      overflow-x: scroll;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;

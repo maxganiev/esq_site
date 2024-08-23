@@ -80,3 +80,8 @@ body {
 .rounded-3 {
   border-radius: 12px !important;
 }
+
+.form-check-input:checked {
+  background-color: #ff661c !important;
+  border-color: #ff661c !important;
+}

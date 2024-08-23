@@ -5,6 +5,8 @@
   import Icon from '@iconify/svelte';
   import BtnBusiness from './buttons/BtnBusiness.svelte';
   import GutterMain from './gutters/GutterMain.svelte';
+  import { isMobile } from '$lib/stores/ui';
+  import { contacts } from '$lib/stores/contacts';
 
   const crumbs = [
     new BreadCrumb('Главная', null, '/'),
@@ -15,72 +17,102 @@
 </script>
 
 <footer class="clr-white-soft bg-clr-green-dark h-40-vh">
-  <GutterMain
-    classList={['d-grid', 'justify-content-between', 'footer-content']}>
-    <ul class="list fs-headline-sm clr-white">
-      <li class="pb-3">
-        <img
-          src="{globals.imagePath}logo/esq.svg"
-          alt="esq_logo"
-          class="object-fit-contain w-50" />
-      </li>
-      <li>
-        <span class="d-inline-block text-nowrap align-middle">
-          <Icon icon="lucide:mail" style="color: #fafafa" />
-          <a class="ps-2" href="mailto:esq@mail.com" target="_blank">
-            esq@mail.com
-          </a>
-        </span>
-      </li>
-      <li>
-        <span class="d-inline-block text-nowrap align-middle">
-          <Icon icon="lucide:phone" style="color: #fafafa" />
-          <p class="d-inline ps-2">+7 (812) 320-88-81</p>
-        </span>
-      </li>
-      <li>
-        <span class="d-inline-block text-nowrap align-middle">
-          <Icon icon="iconoir:telegram" style="color: #fafafa" />
-          <a class="ps-2" href="#" target="_blank">Telegram</a>
-        </span>
-      </li>
-    </ul>
+  <GutterMain>
+    <!--Desktop-->
+    {#if !$isMobile}
+      <div class="d-grid justify-content-between footer-content">
+        <ul class="list fs-headline-sm clr-white">
+          <li class="pb-3">
+            <img
+              src="{globals.imagePath}logo/esq.svg"
+              alt="esq_logo"
+              class="object-fit-contain w-50" />
+          </li>
+          {#each $contacts as contact (contact.id)}
+            <li>
+              <span class="d-inline-block text-nowrap align-middle">
+                <Icon icon={contact.icon} style="color: #fafafa" />
+                <a class="ps-2" href={contact.href} target="_blank">
+                  {contact.text}
+                </a>
+              </span>
+            </li>
+          {/each}
+        </ul>
 
-    <ul class="list fs-body-lg fw-semi-bold d-grid links flex-row-gap-0-5">
-      {#each crumbs.slice(0, 3) as crumb}
-        <li>
-          <a class="clr-white" href={crumb.href}>{crumb.name}</a>
-        </li>
-      {/each}
+        <ul class="list fs-body-lg fw-semi-bold d-grid links flex-row-gap-0-5">
+          {#each crumbs.slice(0, 3) as crumb}
+            <li>
+              <a class="clr-white" href={crumb.href}>{crumb.name}</a>
+            </li>
+          {/each}
 
-      <li>
-        <BtnBusiness />
-      </li>
-    </ul>
+          <li>
+            <BtnBusiness />
+          </li>
+        </ul>
 
-    <div data-description="Empty DIV to add spaces between cols"></div>
+        <div data-description="Empty DIV to add spaces between cols"></div>
 
-    <ul class="list fs-headline-sm">
-      <li class="fs-body-lg clr-gray-disabled">Оборудование</li>
-      {#each $categories.slice(0, 7) as category}
-        <li>
-          <a class="clr-white" href={'/category' + category.href}>
-            {category.name}
-          </a>
-        </li>
-      {/each}
-    </ul>
+        <ul class="list fs-headline-sm">
+          <li class="fs-body-lg clr-gray-disabled">Оборудование</li>
+          {#each $categories.slice(0, 7) as category}
+            <li>
+              <a class="clr-white" href={'/category' + category.href}>
+                {category.name}
+              </a>
+            </li>
+          {/each}
+        </ul>
 
-    <ul class="list fs-headline-sm">
-      <li class="o-0">Оборудование</li>
-      {#each $categories.slice(7, 12) as category}
-        <li>
-          <a class="clr-white" href={'/category' + category.href}>
-            {category.name}
-          </a>
-        </li>
-      {/each}
-    </ul>
+        <ul class="list fs-headline-sm">
+          <li class="o-0">Оборудование</li>
+          {#each $categories.slice(7, 12) as category}
+            <li>
+              <a class="clr-white" href={'/category' + category.href}>
+                {category.name}
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </div>
+    {:else}
+      <!--Mobile-->
+      <div class="d-flex flex-column flex-row-gap-2-5">
+        <div class="d-flex flex-column align-items-center flex-row-gap-1-5">
+          <img
+            src="{globals.imagePath}logo/esq.svg"
+            alt="esq_logo"
+            class="object-fit-contain w-50" />
+          <BtnBusiness />
+        </div>
+
+        <ul
+          class="list fs-label-lg fw-semi-bold d-grid links flex-row-gap-1 p-0 text-center">
+          {#each crumbs.slice(0, 3) as crumb}
+            <li>
+              <a class="clr-white" href={crumb.href}>{crumb.name}</a>
+            </li>
+          {/each}
+        </ul>
+
+        <div class="d-flex flex-column-gap-0-75 justify-content-center">
+          {#each $contacts as contact (contact.id)}
+            <div class="border border-1 rounded-circle border-white p-2">
+              <span class="d-inline-block text-nowrap align-middle">
+                <a class="p-0" href={contact.href} target="_blank">
+                  <Icon
+                    icon={contact.icon}
+                    style="color: #fafafa"
+                    width="2em"
+                    height="2em" />
+                </a>
+              </span>
+            </div>
+          {/each}
+        </div>
+      </div>
+    {/if}
   </GutterMain>
 </footer>
 

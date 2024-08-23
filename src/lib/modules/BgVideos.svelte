@@ -2,6 +2,7 @@
   import BgVideo from '$lib/components/BgVideo.svelte';
   import { onMount } from 'svelte';
   import { Counter } from '$lib/utils/counter';
+  import { isMobile } from '$lib/stores/ui';
 
   const videoPath = '/assets/videos/',
     srcs = [
@@ -45,7 +46,6 @@
       let item = contentElsViewStatus[i],
         maxValue = customContent[i].lgNum;
 
-      //   if (item.inView) continue;
       item.inView =
         item.elem.getBoundingClientRect().bottom <
         document.documentElement.clientHeight;
@@ -88,13 +88,12 @@
   });
 </script>
 
-<div
-  class="d-flex flex-column flex-row-gap-2 w-100 h-150-vh bg-clr-white-beige">
+<div class="d-flex flex-column flex-row-gap-2 w-100 bg-clr-white-beige">
   {#each srcs as src, index}
     <BgVideo {src} thumbnail={thumbnails[index]}>
       <div
         slot="custom-content"
-        class="bg-video-content pos-a d-flex flex-column justify-content-center rounded-3 p-4 bg-clr-green-dark-shaded w-30"
+        class="bg-video-content d-flex flex-column justify-content-center rounded-3 p-4 bg-clr-green-dark-shaded w-30"
         bind:this={contentEls[index]}>
         <p class="mb-0 fs-display-md fw-semi-bold clr-white">
           {#if contentElsViewStatus.length > 0}
@@ -106,7 +105,8 @@
           {/if}
           {customContent[index].lgPhrase}
         </p>
-        <small class="clr-white fs-body-lg fw-regular">
+        <small
+          class="clr-white fs-{!$isMobile ? 'body-lg' : 'label-lg'} fw-regular">
           {customContent[index].smPhrase}
         </small>
       </div>
@@ -116,10 +116,24 @@
 
 <style lang="scss" scoped>
   .bg-video-content {
+    position: absolute;
     bottom: 5%;
     left: 5%;
     min-width: 300px;
     max-width: fit-content;
     backdrop-filter: blur(20px);
+
+    @media (min-width: 150px) and (max-width: 750px) {
+      position: relative;
+      bottom: unset;
+      left: 0;
+      width: 100% !important;
+      max-width: unset;
+      height: 40%;
+      border-radius: unset !important;
+      backdrop-filter: unset;
+      background-color: #051618 !important;
+      padding-top: 2.5rem !important;
+    }
   }
 </style>

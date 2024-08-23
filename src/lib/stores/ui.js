@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const navDropDownCategoriesShow = writable(false);
-export const isMobile = writable(false);
+export const navDropDownCategoriesShow = writable(false),
+  isMobile = writable(false),
+  showNavMobileMenu = writable(false);

@@ -1,4 +1,5 @@
 <script>
+  import { isMobile } from '$lib/stores/ui';
   import { onMount } from 'svelte';
 
   /**@type {Object & {id: Number, path: String}[]}*/
@@ -81,7 +82,9 @@
     .join(' ')}">
   <div
     class="slider-body d-grid align-items-center flex-column-gap-1"
-    style="grid-template-columns: repeat({rolledImages.length}, 15%);"
+    style="grid-template-columns: repeat({rolledImages.length}, {$isMobile
+      ? 2
+      : 1}5%);"
     bind:this={sliderBodyEl}>
     {#each rolledImages as image (image.id)}
       <div

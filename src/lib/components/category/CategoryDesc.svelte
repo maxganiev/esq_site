@@ -1,13 +1,22 @@
 <script>
+  import { isMobile } from '$lib/stores/ui';
+
   export let category;
+
+  $: fontSizeLg = $isMobile ? 'fs-label-lg' : 'fs-body-md';
+  $: fontSizeMd = $isMobile ? 'fs-title-lg' : 'fs-body-sm';
 </script>
 
-<div {...$$restProps} class="col-md-12 px-3 d-flex flex-column-gap-1">
-  <div class="h-100 rounded-3 w-30 pos-r">
-    {#if category.promo_desc}
+<div
+  {...$$restProps}
+  class="col-md-12 d-flex {!$isMobile
+    ? 'flex-column-gap-1'
+    : 'flex-column flex-row-gap-0-5'}">
+  <div class="h-100 rounded-3 w-{!$isMobile ? 30 : 100} pos-r">
+    {#if category.promo_desc && !$isMobile}
       <div
         class="promo-desc-wrapper pos-a px-2 py-1 w-100 bg-clr-green-dark-shaded rounded-3">
-        <small class="clr-white fs-body-md fw-regular lh-sm">
+        <small class="clr-white {fontSizeLg} fw-regular lh-sm">
           {category.promo_desc}
         </small>
       </div>
@@ -18,17 +27,21 @@
       alt="asset" />
   </div>
   <div class="h-100 rounded-3 bg-clr-white clr-green-dark p-4 w-fit-content">
-    <h3 class="fs-body-md fw-semi-bold mb-2">{category.name}</h3>
+    <h3 class="{fontSizeLg} fw-semi-bold mb-{!$isMobile ? 2 : 4}">
+      {category.name}
+    </h3>
     {#if category.key_features && category.key_features.length > 0}
       {@const secondaryKeyFeatures = category.key_features.filter(
         (/** @type {{ type_id: Number; }} */ keyFeat) => keyFeat.type_id === 2,
       )}
       {#each secondaryKeyFeatures as categoryFeat, index (categoryFeat.id)}
-        <strong class="fs-body-sm">{categoryFeat.label || ''}</strong>
+        <strong class={fontSizeMd}>{categoryFeat.label || ''}</strong>
 
         {#if categoryFeat.text && categoryFeat.text.length > 0}
           <ul
-            class="list list-dashed fs-body-sm lh-sm text-wrap w-40-vw"
+            class="list list-dashed {fontSizeMd} lh-{$isMobile
+              ? 'lg'
+              : 'sm'} text-wrap w-{$isMobile ? '100' : '40-vw'}"
             style="padding-left: 10px;">
             {#each categoryFeat.text.split('\n') as text}
               <li>
@@ -42,7 +55,9 @@
           <a
             href={category.link}
             target="_blank"
-            class="btn btn-sm w-35 bg-clr-orange clr-white rounded-pill py-2"
+            class="btn btn-sm w-{!$isMobile
+              ? 35
+              : 100} bg-clr-orange clr-white rounded-pill py-2"
             style="max-width: 200px;">
             Купить
           </a>

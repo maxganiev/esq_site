@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import Icon from '@iconify/svelte';
+  import { isMobile } from '$lib/stores/ui';
 
   /**@type {Object & {id: Number, eventDate: String | Date | Number, eventDesc: String, bgImage: String} []}*/
   export let timeline;
@@ -46,6 +47,7 @@
                 (o) => o.eventDate === this.line[0].eventDate,
               ) - 1
             ];
+
           if (prev) {
             this.line.pop();
             this.line.unshift(prev);
@@ -65,17 +67,15 @@
 
   function onScroll() {
     scrollLeftwards = scrollLeftVal < sliderEl.scrollLeft;
-
     scrollLeftVal = sliderEl.scrollLeft;
-    let slideIdx = Array.from(sliderEl.children).findIndex(
-      (child) => scrollLeftVal === child.offsetLeft,
-    );
 
-    isScrolling = slideIdx === -1;
-    if (!isScrolling) {
-      currentSlideIdx = slideIdx;
-      events.updateLine();
-    }
+    isScrolling =
+      Number(sliderEl.scrollLeft.toFixed(0)) !==
+      Number(
+        (sliderEl.getBoundingClientRect().width * currentSlideIdx).toFixed(0),
+      );
+
+    if (!isScrolling) events.updateLine();
   }
 
   function scrollRight() {
@@ -84,6 +84,7 @@
       top: 0,
       behavior: 'smooth',
     });
+    currentSlideIdx++;
   }
 
   function scrollLeft() {
@@ -92,6 +93,7 @@
       top: 0,
       behavior: 'smooth',
     });
+    currentSlideIdx--;
   }
 
   onMount(() => {
@@ -101,6 +103,27 @@
 
 <div
   class="w-100 d-flex flex-column justify-content-center pos-r slider-carousel">
+  <div
+    class="d-flex flex-column justify-content-center align-items-center z-1 event-desc-holder">
+    <div
+      class="w-100 p-4 rounded-3 d-flex flex-column justify-content-center event-desc-body">
+      <p
+        class="mb-0 {!$isMobile
+          ? 'fs-display-sm'
+          : 'fs-label-lg'} fw-semi-bold">
+        <span class="clr-seawave-soft">
+          {timeline[currentSlideIdx].eventDate}
+        </span>
+      </p>
+      <small
+        class="{!$isMobile
+          ? 'fs-body-md clr-white'
+          : 'fs-headline-lg clr-green-dark'} fw-regular">
+        {timeline[currentSlideIdx].eventDesc}
+      </small>
+    </div>
+  </div>
+
   <div
     class="w-100 pos-r slider-body d-grid no-scrollbars pointer-none no-select"
     style="grid-template-columns: repeat({timeline.length}, 100%);"
@@ -112,21 +135,6 @@
         style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url({event.bgImage}) center center/cover;">
       </div>
     {/each}
-  </div>
-
-  <div
-    class="w-30 pos-a d-flex flex-column justify-content-center align-items-center event-desc-holder">
-    <div
-      class="w-100 p-4 rounded-3 d-flex flex-column justify-content-center event-desc-body">
-      <p class="mb-0 fs-display-sm fw-semi-bold">
-        <span class="clr-seawave-soft">
-          {timeline[currentSlideIdx].eventDate}
-        </span>
-      </p>
-      <small class="clr-white fs-body-md fw-regular">
-        {timeline[currentSlideIdx].eventDesc}
-      </small>
-    </div>
   </div>
 
   <div
@@ -148,8 +156,7 @@
               : ''}"
             style="transform: translateY(-60%);">
             <span
-              class="clr-white ev-date {isScrolling &&
-              ev.eventDate === timeline[currentSlideIdx].eventDate
+              class="clr-white ev-date {isScrolling && ev.isActive
                 ? 'is-scrolled'
                 : ''} {index === events.maxTimelineIdx ? 'last-point' : ''}">
               {ev.eventDate}
@@ -190,7 +197,7 @@
 
 <style lang="scss" scoped>
   %height-inherit {
-    height: 70vh;
+    height: 84vh;
     //min-height: inherit;
   }
 
@@ -211,11 +218,23 @@
     }
 
     .event-desc-holder {
+      width: 30%;
+      height: 25%;
+      position: absolute;
       left: 6rem;
       bottom: 22.5vh;
 
       .event-desc-body {
         backdrop-filter: blur(20px);
+      }
+
+      @media (min-width: 150px) and (max-width: 750px) {
+        width: 100%;
+        height: auto;
+        position: relative;
+        left: unset;
+        bottom: unset;
+        padding: 0.5rem;
       }
     }
 
@@ -258,6 +277,10 @@
               top: 25%;
               left: 25%;
               background-color: #3a3f40;
+            }
+
+            @media (min-width: 150px) and (max-width: 750px) {
+              width: 5.2vw;
             }
           }
         }

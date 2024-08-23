@@ -6,34 +6,48 @@
   import Icon from '@iconify/svelte';
   import GutterMain from '$lib/components/gutters/GutterMain.svelte';
   import LinkOrangePill from '$lib/components/buttons/LinkOrangePill.svelte';
+  import { isMobile } from '$lib/stores/ui';
 </script>
 
 <svelte:head>
   <title>ESQ - Главная</title>
 </svelte:head>
 
-<div class="w-100 h-85-vh pos-r overflow-hidden d-flex align-items-center">
+<div class="w-100 pos-r overflow-hidden d-flex align-items-center">
   <div class="w-100 h-100 pos-a top-left z-n-1 bg-clr-green-dark">
     <div class="ellipse"></div>
   </div>
 
-  <GutterMain classList={['d-flex']}>
-    <div class="d-flex flex-column w-60">
+  <GutterMain classList={['d-flex', $isMobile ? 'flex-column' : '']}>
+    <div class="d-flex flex-column w-{$isMobile ? '100' : '45'}">
       <h1 class="fs-display-lg fw-semi-bold clr-white">
         ESQ — ведущий производитель промышленной электроники
       </h1>
 
-      <LinkOrangePill>
-        <span>Перейти в каталог</span>
-      </LinkOrangePill>
+      {#if !$isMobile}
+        <LinkOrangePill>
+          <span>Перейти в каталог</span>
+        </LinkOrangePill>
+      {/if}
     </div>
 
-    <div class="d-flex align-items-center justify-content-end w-40 pos-r">
+    <div
+      class="w-{!$isMobile
+        ? 60
+        : 80} d-flex align-items-center justify-content-end pos-r">
       <img
         src="assets/images/esq_motor.png"
         alt="esq motor"
-        class="pos-a w-50-vw ratio-1x1 object-fit-contain z-n-1" />
+        class="w-100 ratio-1x1 object-fit-contain z-n-1 {!$isMobile
+          ? 'transform-img'
+          : ''}" />
     </div>
+
+    {#if $isMobile}
+      <LinkOrangePill>
+        <span>Перейти в каталог</span>
+      </LinkOrangePill>
+    {/if}
   </GutterMain>
 </div>
 
@@ -41,7 +55,9 @@
 <BgVideos />
 <Categories />
 <ContactForm>
-  <div slot="contact-details" class="d-flex flex-column w-100 flex-row-gap-2">
+  <div
+    slot="contact-details"
+    class="d-flex flex-column w-100 flex-row-gap-2 {$isMobile ? 'd-none' : ''}">
     <div class="w-100">
       <span class="d-flex flex-column-gap-0-5 align-items-center">
         <Icon icon="ic:baseline-mail" style="color: white" />
@@ -80,5 +96,10 @@
     position: absolute;
     left: 30%;
     top: -2.5%;
+  }
+
+  .transform-img {
+    transform: translateY(-19.5%);
+    transform-origin: 0 0;
   }
 </style>

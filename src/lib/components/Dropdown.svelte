@@ -1,5 +1,5 @@
 <script>
-  import { navDropDownCategoriesShow } from '$lib/stores/ui';
+  import { navDropDownCategoriesShow, isMobile } from '$lib/stores/ui';
   import Icon from '@iconify/svelte';
   import { fade } from 'svelte/transition';
 
@@ -23,7 +23,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="dropdown fs-body-lg" on:click={(e) => toggleDropdown(e)}>
+<div class="dropdown" on:click={(e) => toggleDropdown(e)}>
   <!-- svelte-ignore a11y-invalid-attribute -->
   <a href="#">
     <span class="d-flex flex-nowrap align-items-center">
@@ -39,7 +39,9 @@
     <ul
       in:fade={{ duration: 400 }}
       out:fade={{ duration: 400 }}
-      class="dropdown-menu d-grid flex-column-gap-1 flex-row-gap-1 bg-clr-green-dark-mid-opacity flex-row-gap-0-5 {dropdownMenuClasses
+      class="dropdown-menu d-grid flex-column-gap-1 flex-row-gap-1 bg-clr-green-dark{!$isMobile
+        ? '-mid-opacity'
+        : ''} flex-row-gap-0-5 {dropdownMenuClasses
         .map((c) => c)
         .join(' ')} flex-wrap">
       {#each menuItems as item}
@@ -73,8 +75,12 @@
 
     .dropdown-menu {
       backdrop-filter: blur(20px);
-      grid-template-columns: repeat(2, 1fr);
       border-radius: 0 0 1rem 1rem;
+      grid-template-columns: repeat(2, 1fr);
+
+      @media (min-width: 150px) and (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
   }
 </style>

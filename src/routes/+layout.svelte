@@ -2,9 +2,14 @@
   import Footer from '$lib/components/Footer.svelte';
   import Header from '$lib/components/Header.svelte';
   import { categories, branches } from '$lib/stores/categories.js';
-  import { isMobile, navDropDownCategoriesShow } from '$lib/stores/ui.js';
+  import {
+    isMobile,
+    navDropDownCategoriesShow,
+    showNavMobileMenu,
+  } from '$lib/stores/ui.js';
   import { onMount } from 'svelte';
   import ScrollTop from '$lib/components/ScrollTop.svelte';
+  import { navigating } from '$app/stores';
 
   export let data;
   console.log(data);
@@ -22,7 +27,7 @@
   });
 
   $: if (innerWidth) {
-    isMobile.update((v) => (v = innerWidth < 700));
+    isMobile.update((v) => (v = innerWidth < 800));
   }
 
   function handleMainElClick(e) {
@@ -31,7 +36,10 @@
       !e.target.classList.contains('dropdown')
     )
       navDropDownCategoriesShow.update((val) => (val = false));
+    showNavMobileMenu.update((val) => (val = false));
   }
+
+  $: if ($navigating) showNavMobileMenu.update((val) => (val = false));
 </script>
 
 <svelte:window bind:innerWidth bind:scrollY />

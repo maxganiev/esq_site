@@ -6,6 +6,10 @@
   import Icon from '@iconify/svelte';
 
   const path = globals.imagePath + 'categories/';
+  $: minHeightCellClass = $isMobile ? 'h-20-vh' : 'h-40-vh';
+  $: catNameSpanClass = $isMobile
+    ? 'fs-title-lg lh-lg'
+    : 'fs-headline-md lh-md';
 </script>
 
 <div class="w-100 h-100-vh bg-clr-white-beige">
@@ -19,14 +23,14 @@
       <!--Комплектные трансформаторные подстанции-->
       {#if category.id === 1}
         <div
-          class="category-col h-40-vh pos-r"
-          style="grid-column: 1/{$isMobile ? 1 : 3}">
+          class="category-col {minHeightCellClass} pos-r"
+          style="grid-column: 1/3">
           <a
             href="category{category.href}"
             class="d-block w-100 h-100 rounded-3 category-link-hover"
             style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover;">
             <span
-              class="clr-white fs-headline-md lh-sm w-90 text-wrap d-block pt-3 ps-3">
+              class="clr-white {catNameSpanClass} w-90 text-wrap d-block pt-3 px-3">
               {category.name}
             </span>
             <button
@@ -42,14 +46,14 @@
         <!--Комплектное распределительное устройство-->
       {:else if category.id === 13}
         <div
-          class="category-col h-40-vh pos-r center center/cover;"
-          style="grid-column: {$isMobile ? '1/2' : '2/4'}">
+          class="category-col {minHeightCellClass} pos-r center center/cover;"
+          style="grid-column: {$isMobile ? '2/3' : '2/4'}">
           <a
             href="category{category.href}"
             class="d-block w-100 h-100 rounded-3 category-link-hover"
             style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image})">
             <span
-              class="clr-white fs-headline-md lh-sm w-90 text-wrap d-block pt-3 ps-3">
+              class="clr-white {catNameSpanClass} w-90 text-wrap d-block pt-3 px-3">
               {category.name}
             </span>
             <button
@@ -64,12 +68,12 @@
         </div>
         <!--Разное-->
       {:else if category.id === 17}
-        <div class="category-col h-40-vh pos-r">
+        <div class="category-col {minHeightCellClass} pos-r">
           <a
             class="d-block w-100 h-100 rounded-3 bg-clr-white"
             href={category.href}>
             <span
-              class="clr-green-dark fs-headline-md lh-sm w-90 text-wrap d-block pt-3 ps-3">
+              class="clr-green-dark {catNameSpanClass} w-90 text-wrap d-block pt-3 px-3">
               {category.name}
             </span>
 
@@ -81,13 +85,13 @@
           </a>
         </div>
       {:else}
-        <div class="category-col h-40-vh pos-r">
+        <div class="category-col {minHeightCellClass} pos-r">
           <a
             href="category{category.href}"
             class="d-block w-100 h-100 rounded-3 category-link-hover"
             style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover;">
             <span
-              class="clr-white fs-headline-md lh-sm w-90 text-wrap d-block pt-3 ps-3">
+              class="clr-white {catNameSpanClass} w-90 text-wrap d-block pt-3 px-3">
               {category.name}
             </span>
             <button

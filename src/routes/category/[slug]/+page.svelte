@@ -3,13 +3,15 @@
   import CategoryDesc from '$lib/components/category/CategoryDesc.svelte';
   import GutterMain from '$lib/components/gutters/GutterMain.svelte';
   import GutterX from '$lib/components/gutters/GutterX.svelte';
+  import { isMobile } from '$lib/stores/ui';
   import Icon from '@iconify/svelte';
 
   export let data;
 
-  // $: {
-  //   console.log(data);
-  // }
+  $: widthClass = $isMobile ? 'w-100' : 'w-45';
+  $: fontSizeVlg = !$isMobile ? 'fs-headline-lg' : 'fs-label-lg';
+  $: fontSizeLg = !$isMobile ? 'fs-headline-md' : 'fs-label-lg';
+  $: fontSizeSm = !$isMobile ? 'fs-body-md' : 'fs-headline-lg';
 </script>
 
 <svelte:head>
@@ -21,11 +23,18 @@
     <div class="w-100 h-100 pos-a top-left bg-clr-green-dark z-n-1">
       <div class="ellipse"></div>
     </div>
-    <GutterX classList={['d-flex', 'align-items-end', 'pb-6-rem']}>
-      <div class="d-flex flex-column w-45 h-100">
-        <h2 class="fs-display-sm">{data.category.name}</h2>
+    <GutterX
+      classList={[
+        'd-flex',
+        'align-items-end',
+        $isMobile
+          ? 'pb-2-5-rem flex-column-reverse flex-row-gap-2'
+          : 'pb-6-rem',
+      ]}>
+      <div class="d-flex flex-column {widthClass} h-100">
+        <h2 class={fontSizeVlg}>{data.category.name}</h2>
         {#if data.category.description}
-          <p class="fs-body-md w-75 pt-1">
+          <p class="{fontSizeSm} {$isMobile ? 'w-100 pb-2' : 'w-75'} pt-1">
             {data.category.description}
           </p>
         {/if}
@@ -34,7 +43,7 @@
         </LinkOrangePill>
       </div>
 
-      <div class="w-45 h-100 d-flex pos-r bg-img-wrapper">
+      <div class="{widthClass} h-100 d-flex pos-r bg-img-wrapper">
         <img
           class="object-fit-contain bg-img w-100"
           src={'/assets/images/categories/' +
@@ -44,34 +53,36 @@
     </GutterX>
   </div>
 
-  <div class="w-100 bg-clr-white-beige py-5">
-    <GutterMain>
-      <div class="row mx-0">
-        {#each data.category.key_features.filter((/** @type {{ type_id: Number, label: String | null, text: String | null }} */ feat) => feat.type_id === 1) as feat (feat.id)}
-          <div class="col-md-4 col-sm-6 d-flex flex-column clr-green-dark">
-            <Icon
-              icon="lucide:square-check-big"
-              width="1.6rem"
-              height="1.6rem"
-              style="color: #1A747E" />
+  <GutterMain classList={['bg-clr-white-beige']}>
+    <div class="row mx-0">
+      {#each data.category.key_features.filter((/** @type {{ type_id: Number, label: String | null, text: String | null }} */ feat) => feat.type_id === 1) as feat (feat.id)}
+        <div class="col-md-4 col-sm-6 d-flex flex-column clr-green-dark">
+          <Icon
+            icon="lucide:square-check-big"
+            width="1.6rem"
+            height="1.6rem"
+            style="color: #1A747E" />
 
-            <h3 class="fs-body-md fw-semi-bold mt-2">{feat.label || ''}</h3>
-            <p class="fs-body-sm">{feat.text || ''}</p>
-          </div>
+          <h3 class="{fontSizeLg} fw-semi-bold mt-2">
+            {feat.label || ''}
+          </h3>
+          <p class={fontSizeSm}>
+            {feat.text || ''}
+          </p>
+        </div>
+      {/each}
+    </div>
+
+    <div class="row flex-row-gap-1 py-{!$isMobile ? 5 : '2-5-rem'} mx-0">
+      {#if data.subCategories && data.subCategories.length > 0}
+        {#each data.subCategories as subCat (subCat.id)}
+          <CategoryDesc category={subCat} />
         {/each}
-      </div>
-
-      <div class="row flex-row-gap-1 my-5 py-5 mx-0">
-        {#if data.subCategories && data.subCategories.length > 0}
-          {#each data.subCategories as subCat (subCat.id)}
-            <CategoryDesc category={subCat} />
-          {/each}
-        {:else}
-          <CategoryDesc category={data.category} />
-        {/if}
-      </div>
-    </GutterMain>
-  </div>
+      {:else}
+        <CategoryDesc category={data.category} />
+      {/if}
+    </div>
+  </GutterMain>
 </div>
 
 <style lang="scss" scoped>
@@ -107,6 +118,10 @@
 
     .bg-img {
       max-height: 350px;
+    }
+
+    @media (min-width: 150px) and (max-width: 750px) {
+      transform: translateY(-5%);
     }
   }
 </style>

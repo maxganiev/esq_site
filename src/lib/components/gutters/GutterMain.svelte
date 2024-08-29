@@ -5,7 +5,7 @@
 
 <div
   {...$$restProps}
-  class="w-100 h-100 mx-auto {$isMobile ? 'px-2 py-5' : 'p-6-rem'} {classList
+  class="w-100 h-100 mx-auto {$isMobile ? 'px-3 py-5' : 'p-6-rem'} {classList
     .map((c) => c)
     .join(' ')}">
   <slot />

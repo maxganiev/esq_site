@@ -43,9 +43,10 @@
         {#if categoryFeat.text && categoryFeat.text.length > 0}
           <ul
             class="list list-dashed {fontSizeMd} lh-{$isMobile
-              ? 'lg'
-              : 'sm'} text-wrap w-{$isMobile ? '100' : '40-vw'}"
-            style="padding-left: 10px;">
+              ? 'unset'
+              : 'sm'} text-wrap w-{$isMobile ? '100' : '40-vw'} ps-1 {$isMobile
+              ? 'd-flex flex-column flex-row-gap-1 mt-2'
+              : ''}">
             {#each categoryFeat.text.split('\n') as text}
               <li>
                 {text}

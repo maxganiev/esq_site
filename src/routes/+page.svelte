@@ -18,7 +18,7 @@
     <div class="ellipse"></div>
   </div>
 
-  <GutterMain classList={['d-flex', $isMobile ? 'flex-column' : '']}>
+  <GutterMain classList={['d-flex', $isMobile ? 'flex-column pt-3 pb-5' : '']}>
     <div class="d-flex flex-column w-{$isMobile ? '100' : '45'}">
       <h1 class="fs-display-lg fw-semi-bold clr-white">
         ESQ — ведущий производитель промышленной электроники
@@ -34,7 +34,7 @@
     <div
       class="w-{!$isMobile
         ? 60
-        : 85} d-flex align-items-center justify-content-end pos-r">
+        : 75} d-flex align-items-center justify-content-end pos-r">
       <img
         src="assets/images/esq_motor.png"
         alt="esq motor"

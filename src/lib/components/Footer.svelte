@@ -102,7 +102,7 @@
               class="border border-1 rounded-circle border-white p-2 ratio-1x1 d-flex align-items-center justify-content-center">
               <span
                 class="w-50 h-50 d-flex align-items-center justify-content-center">
-                <a class="p-0" href={contact.href} target="_blank">
+                <a class="p-0 d-flex" href={contact.href} target="_blank">
                   <Icon
                     icon={contact.icon}
                     style="color: #fafafa"

@@ -19,7 +19,7 @@
   </div>
 
   <GutterMain classList={['d-flex', $isMobile ? 'flex-column pt-3 pb-5' : '']}>
-    <div class="d-flex flex-column w-{$isMobile ? '100' : '45'}">
+    <div class="d-flex flex-column w-{$isMobile ? '100' : '60'}">
       <h1 class="fs-display-lg fw-semi-bold clr-white">
         ESQ — ведущий производитель промышленной электроники
       </h1>
@@ -33,12 +33,12 @@
 
     <div
       class="w-{!$isMobile
-        ? 60
+        ? 40
         : 75} d-flex align-items-center justify-content-end pos-r">
       <img
         src="assets/images/esq_motor.png"
         alt="esq motor"
-        class="w-100 ratio-1x1 object-fit-contain z-n-1 transform-img" />
+        class="w-100 ratio-1x1 object-fit-contain z-n-1" />
     </div>
 
     {#if $isMobile}

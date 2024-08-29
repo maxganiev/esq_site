@@ -32,7 +32,7 @@
 
   const customContent = {
     0: {
-      lgNum: 20,
+      lgNum: 25,
       lgPhrase: 'лет',
       smPhrase:
         'разрабатываем, производим и поставляем энерогоэффективное оборудование',
@@ -43,7 +43,7 @@
       smPhrase: 'клиентов используют оборудование ESQ',
     },
     2: {
-      lgNum: 20,
+      lgNum: 25,
       lgPhrase: 'филиалов',
       smPhrase: 'в России, Казахстане, Кыргызстане и Узбекистане',
     },
@@ -152,7 +152,7 @@
   ];
 
   $: fontSizeLg = !$isMobile ? 'fs-display-sm' : 'fs-label-lg';
-  $: fontSizeSm = !$isMobile ? 'fs-body-lg' : 'fs-headline-lg';
+  $: fontSizeSm = !$isMobile ? 'fs-body-lg' : 'fs-title-lg';
 </script>
 
 <svelte:head>

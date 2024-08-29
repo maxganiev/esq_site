@@ -14,12 +14,12 @@ $font-sizes: (
   'title-sm': 0.6rem,
   //
   'label-lg': 1rem,
-  'label-md': 0.7rem,
-  'label-sm': 0.6rem,
+  'label-md': 0.8rem,
+  'label-sm': 0.7rem,
   //
   'body-lg': calc($index * 0.65),
-  'body-md': calc($index * 0.6),
-  'body-sm': calc($index * 0.5),
+  'body-md': calc($index * 0.65),
+  'body-sm': calc($index * 0.6),
 );
 @each $key, $value in $font-sizes {
   .fs-#{$key} {
@@ -265,6 +265,10 @@ $positioning-options: (
 
 .z-1 {
   z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
 }
 
 .bottom {

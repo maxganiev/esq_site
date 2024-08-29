@@ -34,13 +34,11 @@
     <div
       class="w-{!$isMobile
         ? 60
-        : 80} d-flex align-items-center justify-content-end pos-r">
+        : 85} d-flex align-items-center justify-content-end pos-r">
       <img
         src="assets/images/esq_motor.png"
         alt="esq motor"
-        class="w-100 ratio-1x1 object-fit-contain z-n-1 {!$isMobile
-          ? 'transform-img'
-          : ''}" />
+        class="w-100 ratio-1x1 object-fit-contain z-n-1 transform-img" />
     </div>
 
     {#if $isMobile}
@@ -88,7 +86,7 @@
 <style lang="scss" scoped>
   .ellipse {
     width: 95%;
-    min-height: 100vh;
+    //min-height: 100vh;
     aspect-ratio: 1 / 1;
     background: linear-gradient(#051618, #1a747e);
     border-radius: 1000px;
@@ -96,6 +94,12 @@
     position: absolute;
     left: 30%;
     top: -2.5%;
+
+    @media (min-width: 150px) and (max-width: 750px) {
+      width: 130%;
+      left: 0%;
+      top: 25%;
+    }
   }
 
   .transform-img {

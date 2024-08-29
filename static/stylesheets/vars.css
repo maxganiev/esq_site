@@ -39,11 +39,11 @@
 }
 
 .fs-label-md {
-  font-size: 0.7rem !important;
+  font-size: 0.8rem !important;
 }
 
 .fs-label-sm {
-  font-size: 0.6rem !important;
+  font-size: 0.7rem !important;
 }
 
 .fs-body-lg {
@@ -51,11 +51,11 @@
 }
 
 .fs-body-md {
-  font-size: calc((1vmin + 1vmax) * 0.6) !important;
+  font-size: calc((1vmin + 1vmax) * 0.65) !important;
 }
 
 .fs-body-sm {
-  font-size: calc((1vmin + 1vmax) * 0.5) !important;
+  font-size: calc((1vmin + 1vmax) * 0.6) !important;
 }
 
 .fw-bold {
@@ -1106,6 +1106,10 @@
 
 .z-1 {
   z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
 }
 
 .bottom {

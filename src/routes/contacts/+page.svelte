@@ -47,7 +47,7 @@
     ? 'fs-body-lg lh-md w-75'
     : 'fs-label-lg lh-lg w-100';
   $: fontSizeLg = !$isMobile ? 'fs-display-sm' : 'fs-label-lg';
-  $: fontSizeSm = !$isMobile ? 'fs-body-md' : 'fs-headline-lg';
+  $: fontSizeSm = !$isMobile ? 'fs-body-md' : 'fs-title-lg';
 </script>
 
 <svelte:head>
@@ -60,9 +60,7 @@
       <div
         class="col-md-4 col-sm-6 d-flex flex-column flex-row-gap-0-25 clr-green-dark">
         <h2
-          class="{!$isMobile
-            ? 'fs-display-md'
-            : 'fs-display-lg'} fw-semi-bold p-0 m-0">
+          class="{!$isMobile ? 'fs-display-md' : 'fs-display-lg'} fw-semi-bold">
           Контакты
         </h2>
         <ul class="m-0 p-0 mt-3 {listClass} list">
@@ -87,7 +85,7 @@
       <img
         class="col-md-8 col-sm-6 {$isMobile ? 'mt-2-rem' : ''}"
         alt="logistics"
-        src="{globals.imagePath}logistics.png" />
+        src="{globals.imagePath}logistics{$isMobile ? '_lg' : ''}.png" />
     </div>
   </GutterMain>
 

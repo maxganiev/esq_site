@@ -7,15 +7,15 @@
 
   const path = globals.imagePath + 'categories/';
   $: minHeightCellClass = $isMobile ? 'h-20-vh' : 'h-40-vh';
-  $: catNameSpanClass = $isMobile
-    ? 'fs-title-lg lh-lg'
-    : 'fs-headline-md lh-md';
+  $: catNameSpanClass = $isMobile ? 'fs-title-lg' : 'fs-headline-md lh-md';
 </script>
 
 <div class="w-100 h-100-vh bg-clr-white-beige">
   <GutterMain classList={['categories', 'flex-column-gap-1', 'flex-row-gap-1']}>
     <h2
-      class="clr-green-dark fs-display-md fw-semi-bold"
+      class="clr-green-dark {!$isMobile
+        ? 'fs-display-md'
+        : 'fs-label-lg'} fw-semi-bold"
       style="grid-column: 1/{$isMobile ? 3 : 5}">
       Ключевой ассортимент
     </h2>

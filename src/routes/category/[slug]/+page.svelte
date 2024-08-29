@@ -11,7 +11,7 @@
   $: widthClass = $isMobile ? 'w-100' : 'w-45';
   $: fontSizeVlg = !$isMobile ? 'fs-headline-lg' : 'fs-label-lg';
   $: fontSizeLg = !$isMobile ? 'fs-headline-md' : 'fs-label-lg';
-  $: fontSizeSm = !$isMobile ? 'fs-body-md' : 'fs-headline-lg';
+  $: fontSizeSm = !$isMobile ? 'fs-body-md' : 'fs-title-lg';
 </script>
 
 <svelte:head>
@@ -38,7 +38,7 @@
             {data.category.description}
           </p>
         {/if}
-        <LinkOrangePill>
+        <LinkOrangePill href={data.category.link || 'https://b2b.elcomspb.ru/'}>
           <span>Перейти в каталог</span>
         </LinkOrangePill>
       </div>
@@ -88,28 +88,36 @@
 <style lang="scss" scoped>
   .ellipse {
     width: 50%;
-    height: 90%;
-    background: linear-gradient(
-      235deg,
-      hsl(186deg 66% 6%) 0%,
-      hsl(188deg 49% 8%) 23%,
-      hsl(188deg 51% 11%) 32%,
-      hsl(187deg 53% 13%) 36%,
-      hsl(187deg 55% 15%) 39%,
-      hsl(187deg 56% 17%) 42%,
-      hsl(187deg 58% 19%) 44%,
-      hsl(187deg 59% 21%) 46%,
-      hsl(186deg 61% 23%) 50%,
-      hsl(186deg 63% 26%) 57%,
-      hsl(186deg 64% 28%) 68%,
-      hsl(186deg 66% 30%) 100%
+    aspect-ratio: 1/1;
+
+    background-image: linear-gradient(
+      25deg,
+      hsl(188deg 100% 27%) 0%,
+      hsl(188deg 96% 26%) 1%,
+      hsl(188deg 93% 24%) 3%,
+      hsl(188deg 89% 22%) 4%,
+      hsl(187deg 86% 21%) 7%,
+      hsl(187deg 83% 19%) 10%,
+      hsl(187deg 80% 17%) 14%,
+      hsl(187deg 77% 15%) 19%,
+      hsl(187deg 74% 13%) 27%,
+      hsl(187deg 71% 10%) 37%,
+      hsl(186deg 68% 8%) 54%,
+      hsl(186deg 66% 6%) 100%
     );
     border-radius: 200%;
     opacity: 0.7;
     position: absolute;
-    bottom: -5vh;
-    right: 5vw;
-    transform: rotate(-5deg);
+
+    transform: rotate(245deg);
+
+    //top: -10%;
+    left: 40vw;
+
+    @media (min-width: 150px) and (max-width: 750px) {
+      width: 130%;
+      left: 0;
+    }
   }
 
   .bg-img-wrapper {

@@ -64,7 +64,7 @@
   $: rowWrapperClass = $isMobile ? 'd-block' : 'd-flex flex-column-gap-1';
   $: labelWidthClass = $isMobile ? 'w-100 pb-2' : 'w-20';
   $: inputWidthClass = $isMobile ? 'w-100' : 'w-80';
-  $: fontSizeClass = $isMobile ? 'fs-label-lg' : 'fs-headline-sm';
+  $: fontSizeClass = $isMobile ? 'fs-title-lg' : 'fs-headline-sm';
 
   let conditionsAccepted = false;
 </script>

@@ -80,10 +80,13 @@
     <!--Mobile-->
   {:else}
     <nav
-      class="navbar p-0 w-100 h-15-vh align-items-center fs-label-lg clr-white-soft bg-clr-green-dark fw-light">
+      class="navbar py-4 px-0 w-100 h-15-vh align-items-center fs-label-lg clr-white-soft bg-clr-green-dark fw-light">
       <GutterX classList={['d-flex', 'align-items-center', 'flex-wrap']}>
-        <a href="/" style="margin-right:2.5%;">
-          <img src="{globals.imagePath}logo/esq.svg" alt="esq_logo" />
+        <a href="/" style="margin-right:2.5%;" class="w-25">
+          <img
+            src="{globals.imagePath}logo/esq.svg"
+            alt="esq_logo"
+            class="w-100" />
         </a>
         <div class="flex-grow-1 d-flex justify-content-end">
           {#if !$showNavMobileMenu}
@@ -121,7 +124,7 @@
 
         {#if $showNavMobileMenu}
           <ul
-            class="d-flex list flex-row-gap-1-75 flex-column w-100 pos-a list-mobile z-1 ps-0 ps-2-5-rem fs-label-lg bg-clr-green-dark"
+            class="d-flex list flex-row-gap-1-75 flex-column w-100 pos-a list-mobile z-2 ps-0 ps-2-5-rem fs-label-lg bg-clr-green-dark"
             bind:offsetWidth={listOffsetWidth}
             in:fly={{
               duration: 400,
@@ -154,6 +157,7 @@
                       'fs-label-lg',
                       'hover-item',
                       'fw-light',
+                      'pos-r',
                     ]} />
                 {:else}
                   <a
@@ -183,6 +187,6 @@
   .list-mobile {
     top: $list-upper-gutter-mobile;
     left: 0;
-    height: calc(100vh - $list-upper-gutter-mobile);
+    //height: calc(100vh - $list-upper-gutter-mobile);
   }
 </style>

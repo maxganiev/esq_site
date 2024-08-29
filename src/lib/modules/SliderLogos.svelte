@@ -3,6 +3,7 @@
   import GutterX from '$lib/components/gutters/GutterX.svelte';
   import GutterY from '$lib/components/gutters/GutterY.svelte';
   import { globals } from '$lib/globals';
+  import { isMobile } from '$lib/stores/ui';
 
   const imgPath = globals.imagePath + 'logo/',
     images = [
@@ -26,7 +27,9 @@
 <GutterY classList={['bg-clr-white-beige ']}>
   <div class="w-100 d-flex flex-column justify-content-center">
     <GutterX>
-      <h4 class="fs-headline-lg mb-5">Нам доверяют</h4>
+      <h4 class="fs-{!$isMobile ? 'headline-lg' : 'display-md'} mb-5">
+        Нам доверяют
+      </h4>
     </GutterX>
 
     <SliderLoop

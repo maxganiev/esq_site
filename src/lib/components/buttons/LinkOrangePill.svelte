@@ -1,6 +1,9 @@
 <script>
   import { isMobile } from '$lib/stores/ui';
   import Icon from '@iconify/svelte';
+
+  /**@type {String}*/
+  export let href = 'https://b2b.elcomspb.ru/';
 </script>
 
 <a
@@ -8,7 +11,7 @@
   class="btn radius-100 bg-clr-orange clr-white {!$isMobile
     ? 'fs-headline-md mt-5'
     : 'fs-headline-lg mb-3'} fw-semi-bold align-self-start py-2 px-4"
-  href="https://b2b.elcomspb.ru/"
+  {href}
   target="_blank">
   <slot></slot>
   <Icon

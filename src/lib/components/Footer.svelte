@@ -83,7 +83,7 @@
           <img
             src="{globals.imagePath}logo/esq.svg"
             alt="esq_logo"
-            class="object-fit-contain w-50" />
+            class="object-fit-contain w-{!$isMobile ? 50 : 30}" />
           <BtnBusiness />
         </div>
 
@@ -98,14 +98,16 @@
 
         <div class="d-flex flex-column-gap-0-75 justify-content-center">
           {#each $contacts as contact (contact.id)}
-            <div class="border border-1 rounded-circle border-white p-2">
-              <span class="d-inline-block text-nowrap align-middle">
+            <div
+              class="border border-1 rounded-circle border-white p-2 ratio-1x1 d-flex align-items-center justify-content-center">
+              <span
+                class="w-50 h-50 d-flex align-items-center justify-content-center">
                 <a class="p-0" href={contact.href} target="_blank">
                   <Icon
                     icon={contact.icon}
                     style="color: #fafafa"
-                    width="2em"
-                    height="2em" />
+                    width="1em"
+                    height="1em" />
                 </a>
               </span>
             </div>

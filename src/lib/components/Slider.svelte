@@ -99,6 +99,10 @@
   onMount(() => {
     events.setLine();
   });
+
+  $: timelineGridCols = !$isMobile
+    ? '6rem 1fr 1fr 1fr 6rem'
+    : '1rem 1fr 1fr 1fr 1rem';
 </script>
 
 <div
@@ -141,7 +145,7 @@
     class="w-100 h-5-vh d-flex flex-column justify-content-center pos-a timeline-wrapper">
     <div
       class="w-100 d-grid align-items-end text-center timeline-axis"
-      style="grid-template-columns: 6rem 1fr 1fr 1fr 6rem;">
+      style="grid-template-columns: {timelineGridCols}">
       <div class="event-holder o-{currentSlideIdx < 1 ? '0' : '1'}"></div>
       {#each events.line as ev, index}
         <div
@@ -198,7 +202,10 @@
 <style lang="scss" scoped>
   %height-inherit {
     height: 84vh;
-    //min-height: inherit;
+
+    @media (min-width: 150px) and (max-width: 750px) {
+      height: auto;
+    }
   }
 
   .slider-carousel {
@@ -211,8 +218,11 @@
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
 
+      @media (min-width: 150px) and (max-width: 750px) {
+        min-height: 60vh;
+      }
+
       .slide {
-        @extend %height-inherit;
         scroll-snap-align: start;
       }
     }

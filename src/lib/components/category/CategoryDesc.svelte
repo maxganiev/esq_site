@@ -10,26 +10,29 @@
 <div
   {...$$restProps}
   class="col-md-12 d-flex {!$isMobile
-    ? 'flex-column-gap-1'
-    : 'flex-column flex-row-gap-0-5'}">
-  <div class="h-100 rounded-3 w-{!$isMobile ? 30 : 100} pos-r">
-    {#if category.promo_desc && !$isMobile}
+    ? 'flex-column-gap-3'
+    : 'flex-column flex-row-gap-1'} bg-clr-white p-4 rounded-3">
+  <div class="h-100 rounded-3 w-{!$isMobile ? 40 : 100} pos-r">
+    <h3
+      class="fs-{!$isMobile
+        ? 'headline-md'
+        : 'display-md'} fw-bold mb-{!$isMobile ? 2 : 4} mb-4">
+      {category.name}
+    </h3>
+    <!-- {#if category.promo_desc && !$isMobile}
       <div
         class="promo-desc-wrapper pos-a px-2 py-1 w-100 bg-clr-green-dark-shaded rounded-3">
         <small class="clr-white {fontSizeLg} fw-regular lh-sm">
           {category.promo_desc}
         </small>
       </div>
-    {/if}
+    {/if} -->
     <img
       src={'/assets/images/categories/' + category.image}
-      class="w-100 h-100"
+      class="w-100 rounded-3"
       alt="asset" />
   </div>
-  <div class="h-100 rounded-3 bg-clr-white clr-green-dark p-4 w-fit-content">
-    <h3 class="{fontSizeLg} fw-semi-bold mb-{!$isMobile ? 2 : 4}">
-      {category.name}
-    </h3>
+  <div class="h-100 rounded-3 clr-green-dark w-fit-content">
     {#if category.key_features && category.key_features.length > 0}
       {@const secondaryKeyFeatures = category.key_features.filter(
         (/** @type {{ type_id: Number; }} */ keyFeat) => keyFeat.type_id === 2,
@@ -70,7 +73,7 @@
 <style lang="scss" scoped>
   .promo-desc-wrapper {
     left: 2.5%;
-    top: 4.5%;
+    top: 15.5%;
     max-width: 320px;
     backdrop-filter: blur(20px);
     box-shadow: -10px 0px 0px -5px #00d1f2;

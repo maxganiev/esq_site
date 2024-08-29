@@ -34,7 +34,7 @@
     <div
       class="w-{!$isMobile
         ? 40
-        : 60} d-flex align-items-center justify-content-end pos-r">
+        : 75} d-flex align-items-center justify-content-end pos-r">
       <img
         src="assets/images/esq_motor.png"
         alt="esq motor"

@@ -133,6 +133,7 @@ $spaces: (
   '5-rem': 5rem,
   '6-rem': 6rem,
   '20-vh': 20vh,
+  '3-fluid': 3vw,
 );
 @each $key, $value in $spaces {
   .pt-#{$key} {
@@ -312,5 +313,18 @@ $ratios-options: (
 @each $key, $value in $ratios-options {
   .ratio-#{$key} {
     aspect-ratio: $value !important;
+  }
+}
+
+$overflow-options: (
+  'scroll': scroll,
+);
+@each $key, $value in $overflow-options {
+  .overflow-x-#{$key} {
+    overflow-x: $value !important;
+  }
+
+  .overflow-y-#{$key} {
+    overflow-y: $value !important;
   }
 }

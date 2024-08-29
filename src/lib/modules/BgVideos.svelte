@@ -99,7 +99,7 @@
         slot="custom-content"
         class="bg-video-content d-flex flex-column justify-content-center rounded-3 bg-clr-green-dark-shaded w-30 {!$isMobile
           ? 'p-4'
-          : 'py-5 px-2'}"
+          : 'py-5 px-3'}"
         bind:this={contentEls[index]}>
         <p
           class="mb-0 fs-{!$isMobile

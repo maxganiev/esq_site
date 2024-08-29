@@ -8,13 +8,12 @@
 
 <a
   {...$$restProps}
-  class="btn {!$isMobile
-    ? 'radius-100 '
-    : 'rounded-3'} bg-clr-orange clr-white {!$isMobile
+  class="btn radius-100 bg-clr-orange clr-white {!$isMobile
     ? 'fs-headline-md mt-5'
     : 'fs-headline-lg mb-3'} fw-semi-bold align-self-start py-2 px-4"
   {href}
-  target="_blank">
+  target="_blank"
+  style="min-width: 200px;">
   <slot></slot>
   <Icon
     icon="lucide:arrow-right"

@@ -123,7 +123,10 @@
     </div>
     <div class="{inputWidthClass} d-flex flex-column flex-row-gap-0-5">
       <Autocomplete
-        items={$branches.map((branch) => branch)}
+        items={[
+          { config_name: 'Санкт-Петербург' },
+          ...$branches.map((branch) => branch),
+        ].sort((a, b) => (a.config_name < b.config_name ? -1 : 1))}
         itemKey={'config_name'}
         class="{fontSizeClass} w-100 form-control no-scrollbars" />
     </div>

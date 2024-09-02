@@ -56,7 +56,7 @@
           <a
             href="category{category.href}"
             class="d-block w-100 h-100 rounded-3 category-link-hover"
-            style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image})">
+            style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url({path}{category.image}) center center/cover;">
             <span
               class="clr-white {catNameSpanClass} w-90 text-wrap d-block pt-3 px-3">
               {category.name}

@@ -89,10 +89,7 @@
   });
 </script>
 
-<div
-  class="d-flex flex-column flex-row-gap-2 w-100 bg-clr-{!$isMobile
-    ? 'white-beige'
-    : 'green-dark pb-5'}">
+<div class="d-flex flex-column flex-row-gap-2 w-100 bg-clr-white-beige">
   {#each srcs as src, index}
     <BgVideo {src} thumbnail={thumbnails[index]}>
       <div

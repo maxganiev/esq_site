@@ -290,6 +290,24 @@
   transition: color 0.4s ease;
 }
 
+.bg-clr-cyan-light {
+  background-color: #006272 !important;
+}
+
+.clr-cyan-light {
+  color: #006272 !important;
+}
+
+.hover-bg-clr-cyan-light:hover {
+  background-color: #006272 !important;
+  transition: background-color 0.4s ease;
+}
+
+.hover-clr-cyan-light:hover {
+  color: #006272 !important;
+  transition: color 0.4s ease;
+}
+
 .bg-clr-orange {
   background-color: #ff661c !important;
 }

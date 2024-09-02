@@ -1,11 +1,9 @@
 import { readable, get, writable, derived } from 'svelte/store';
-import citiesJson from '$lib/russian-cities.json';
 import { addDays, format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import phoneMasksJson from '$lib/phone-masks.json';
 
-export const cities = readable(citiesJson),
-  daysToCallback = readable([], (set) => {
+export const daysToCallback = readable([], (set) => {
     /**@type {Object & {valueISO: Date | String, value: String} []}*/
     let days = [];
 

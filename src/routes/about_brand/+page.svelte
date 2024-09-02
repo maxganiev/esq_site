@@ -11,22 +11,22 @@
     {
       id: 1,
       right: !$isMobile ? '15vw' : '10vw',
-      width: '5vw',
+      width: !$isMobile ? '5vw' : '25vw',
       rotate: '180deg',
       top: !$isMobile ? '-1.5rem' : 0,
     },
     {
       id: 2,
-      top: '25%',
-      right: '-1.5vw',
-      width: '8.5vw',
+      top: !$isMobile ? '25%' : '40%',
+      right: !$isMobile ? '-1.5vw' : '-5vw',
+      width: !$isMobile ? '8.5vw' : '20vw',
       rotate: '-90deg',
     },
     {
       id: 3,
       bottom: !$isMobile ? '-1.25rem' : 0,
       right: '25vw',
-      width: '12.5vw',
+      width: !$isMobile ? '12.5vw' : '25vw',
     },
   ];
 
@@ -199,7 +199,7 @@
             ) + (key !== '1' ? '' : '+')}
             {customContent[key].lgPhrase}
           </span>
-          <p class="mt-2 {fontSizeSm} clr-green-dark">
+          <p class="mt-2 {fontSizeSm} clr-green-dark mb-2-rem">
             {customContent[key].smPhrase}
           </p>
         </div>
@@ -211,7 +211,7 @@
     <div class="d-flex flex-column">
       <h3
         class="{fontSizeLg} clr-green-dark fw-semi-bold {!$isMobile
-          ? 'pb-6-rem ps-6-rem'
+          ? 'pb-5 ps-6-rem'
           : 'py-3 ps-2-rem'} m-0">
         История развития
       </h3>

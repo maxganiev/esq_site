@@ -3,7 +3,6 @@
 
   export let category;
 
-  $: fontSizeLg = $isMobile ? 'fs-label-lg' : 'fs-body-md';
   $: fontSizeMd = $isMobile ? 'fs-title-lg' : 'fs-body-sm';
 </script>
 
@@ -11,7 +10,9 @@
   {...$$restProps}
   class="col-md-12 d-flex {!$isMobile
     ? 'flex-column-gap-3'
-    : 'flex-column flex-row-gap-1'} bg-clr-white p-4 rounded-3">
+    : 'flex-column flex-row-gap-1'} bg-clr-white p-{!$isMobile
+    ? 4
+    : 3} rounded-3">
   <div class="h-100 rounded-3 w-{!$isMobile ? 40 : 100} pos-r">
     <h3
       class="fs-{!$isMobile

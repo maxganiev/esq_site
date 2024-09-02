@@ -1,7 +1,6 @@
 <script>
   import MaskInput from 'svelte-input-mask/MaskInput.svelte';
   import {
-    cities,
     daysToCallback,
     timesToCallback,
     selectedDayToCallback,
@@ -10,6 +9,7 @@
   import { Debounce } from '$lib/utils/debounce';
   import Autocomplete from './Autocomplete.svelte';
   import { isMobile } from '$lib/stores/ui';
+  import { branches } from '$lib/stores/categories';
 
   /**@type {Function}*/
   export let onSubmit,
@@ -123,9 +123,9 @@
     </div>
     <div class="{inputWidthClass} d-flex flex-column flex-row-gap-0-5">
       <Autocomplete
-        items={$cities}
-        itemKey={'name'}
-        class="{fontSizeClass} w-100 form-control" />
+        items={$branches.map((branch) => branch)}
+        itemKey={'config_name'}
+        class="{fontSizeClass} w-100 form-control no-scrollbars" />
     </div>
   </div>
 

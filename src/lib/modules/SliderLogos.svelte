@@ -27,7 +27,7 @@
 <GutterY classList={['bg-clr-white-beige ']}>
   <div class="w-100 d-flex flex-column justify-content-center">
     <GutterX>
-      <h4 class="fs-{!$isMobile ? 'headline-lg' : 'display-md'} mb-5">
+      <h4 class="fs-{!$isMobile ? 'headline-lg mb-5' : 'display-md mb-4'}">
         Нам доверяют
       </h4>
     </GutterX>

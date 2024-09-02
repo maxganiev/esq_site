@@ -43,9 +43,7 @@
     selectedCountryId = countryId;
   }
 
-  $: listClass = !$isMobile
-    ? 'fs-body-lg lh-md w-75'
-    : 'fs-label-lg lh-lg w-100';
+  $: listClass = !$isMobile ? 'fs-body-lg lh-md w-75' : 'fs-label-lg w-100';
   $: fontSizeLg = !$isMobile ? 'fs-display-sm' : 'fs-label-lg';
   $: fontSizeSm = !$isMobile ? 'fs-body-md' : 'fs-title-lg';
 </script>
@@ -118,8 +116,8 @@
       </div>
       <div
         class="col-md-12 row flex-row-gap-{$isMobile
-          ? 2
-          : 3} clr-green-dark mt-5">
+          ? '2 py-5'
+          : '3 pt-5'} clr-green-dark">
         {#each $branches.filter((branch) => branch.country_id === selectedCountryId) as branch}
           <div class="col-lg-3 col-md-4 col-sm-6">
             <h4 class={fontSizeLg}>

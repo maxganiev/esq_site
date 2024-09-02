@@ -66,7 +66,7 @@
           <h3 class="{fontSizeLg} fw-semi-bold mt-2">
             {feat.label || ''}
           </h3>
-          <p class={fontSizeSm}>
+          <p class="{fontSizeSm} {$isMobile ? 'mb-2-rem' : ''}">
             {feat.text || ''}
           </p>
         </div>

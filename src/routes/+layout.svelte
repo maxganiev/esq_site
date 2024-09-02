@@ -12,7 +12,7 @@
   import { navigating } from '$app/stores';
 
   export let data;
-  console.log(data);
+  //console.log(data);
   // @ts-ignore
   categories.set(data.rootCategories);
   branches.set(data.branchesByCountries);

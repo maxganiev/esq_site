@@ -115,7 +115,7 @@
         class="mb-0 {!$isMobile
           ? 'fs-display-sm'
           : 'fs-label-lg'} fw-semi-bold">
-        <span class="clr-seawave-soft">
+        <span class="clr-{!$isMobile ? 'seawave-soft' : 'cyan-light'}">
           {timeline[currentSlideIdx].eventDate}
         </span>
       </p>

@@ -13,7 +13,7 @@
       right: !$isMobile ? '15vw' : '10vw',
       width: !$isMobile ? '5vw' : '25vw',
       rotate: '180deg',
-      top: !$isMobile ? '-1.5rem' : 0,
+      top: !$isMobile ? '-1.65vh' : 0,
     },
     {
       id: 2,
@@ -24,7 +24,7 @@
     },
     {
       id: 3,
-      bottom: !$isMobile ? '-1.25rem' : 0,
+      bottom: !$isMobile ? '-1.65vh' : 0,
       right: '25vw',
       width: !$isMobile ? '12.5vw' : '25vw',
     },

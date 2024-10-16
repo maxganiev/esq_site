@@ -18,6 +18,7 @@
     ],
     customContent = {
       0: {
+        smInitPhrase: 'Более',
         lgNum: 25,
         lgPhrase: 'лет',
         smPhrase:
@@ -103,6 +104,9 @@
             ? 'display-md'
             : 'label-lg'} fw-semi-bold clr-white">
           {#if contentElsViewStatus.length > 0}
+            {#if customContent[index].smInitPhrase}
+              <span>{customContent[index].smInitPhrase}</span>
+            {/if}
             <span class="clr-seawave-soft">
               {new Intl.NumberFormat('ru-RU').format(
                 contentElsViewStatus[index].counter.startValue.toFixed(0),

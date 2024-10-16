@@ -21,7 +21,7 @@
   <GutterMain classList={['d-flex', $isMobile ? 'flex-column pt-3 pb-5' : '']}>
     <div class="d-flex flex-column w-{$isMobile ? '100' : '60'}">
       <h1 class="fs-display-lg fw-semi-bold clr-white">
-        ESQ — ведущий производитель промышленной электроники
+        ESQ — ведущий производитель промышленной электротехники
       </h1>
 
       {#if !$isMobile}

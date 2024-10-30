@@ -3,14 +3,16 @@ import updateCategoryImages from './updateCategoryImages.js';
 import updateCategories from './updateCategories.js';
 import updateKeyFeatures from './updateKeyFeatures.js';
 import insertCategoryLinks from './insertCategoryLinks.js';
+import insertCategoryPromoLinks from './insertCategoryPromoLinks.js';
 
 const prisma = new PrismaClient();
 
 async function seed() {
-  await updateCategoryImages(prisma);
-  await updateCategories(prisma);
-  await updateKeyFeatures(prisma);
-  await insertCategoryLinks(prisma);
+  // await updateCategoryImages(prisma);
+  // await updateCategories(prisma);
+  // await updateKeyFeatures(prisma);
+  // await insertCategoryLinks(prisma);
+  await insertCategoryPromoLinks(prisma);
 }
 
 seed()

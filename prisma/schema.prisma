@@ -23,6 +23,7 @@ model Category {
   key_features    Key_features[]
   secondary_image String?        @db.Text
   promo_desc      String?        @db.Text
+  promo_link      String?        @db.Text
 }
 
 model Branch {

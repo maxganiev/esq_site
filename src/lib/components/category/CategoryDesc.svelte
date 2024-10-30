@@ -1,5 +1,6 @@
 <script>
   import { isMobile } from '$lib/stores/ui';
+  import BtnDownloadPromo from '$lib/components/buttons/BtnDownloadPromo.svelte';
 
   export let category;
 
@@ -63,9 +64,13 @@
             class="btn btn-sm w-{!$isMobile
               ? 35
               : 100} bg-clr-orange clr-white rounded-pill py-2"
-            style="max-width: 200px;">
+            style="max-width: {!$isMobile ? '200px;' : 'unset'};">
             Купить
           </a>
+
+          {#if category.promo_link}
+            <BtnDownloadPromo link={category.promo_link} />
+          {/if}
         {/if}
       {/each}
     {/if}

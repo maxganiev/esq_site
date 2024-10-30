@@ -326,6 +326,24 @@
   transition: color 0.4s ease;
 }
 
+.bg-clr-orange-light {
+  background-color: #ff884f !important;
+}
+
+.clr-orange-light {
+  color: #ff884f !important;
+}
+
+.hover-bg-clr-orange-light:hover {
+  background-color: #ff884f !important;
+  transition: background-color 0.4s ease;
+}
+
+.hover-clr-orange-light:hover {
+  color: #ff884f !important;
+  transition: color 0.4s ease;
+}
+
 .bg-clr-black-gray {
   background-color: #3a3f40 !important;
 }

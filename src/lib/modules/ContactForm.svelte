@@ -24,7 +24,7 @@
         mail: input.email,
         office: input.city,
         comment: `Перезвонить ${input.callbackDate} в ${input.callbackTime}`,
-        requests: input.message,
+        requests: `${'[Заявка с ESQ promo]'}, ${input.message}`,
       };
 
     fd.append('payload', JSON.stringify(payload));

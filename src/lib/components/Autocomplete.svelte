@@ -1,7 +1,7 @@
 <script>
   import { Debounce } from '$lib/utils/debounce';
   import Icon from '@iconify/svelte';
-  import { onMount } from 'svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
 
   const debounce = new Debounce();
 
@@ -56,6 +56,8 @@
    */
   let selectedItemValue = undefined;
 
+  const dispatch = createEventDispatcher();
+
   /**
    * @param {any} item
    */
@@ -63,6 +65,8 @@
     query = itemText(item);
     selectedItemValue = itemText(item);
     showItems = false;
+
+    dispatch('select', selectedItemValue);
   }
 
   /** @type {any[]}*/
@@ -78,6 +82,7 @@
   <input
     class="pos-sticky top-left w-100 h-100"
     type="text"
+    autocomplete="-"
     {placeholder}
     bind:value={query}
     on:focus={focus}

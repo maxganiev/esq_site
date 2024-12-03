@@ -6,10 +6,12 @@
     isMobile,
     navDropDownCategoriesShow,
     showNavMobileMenu,
+    showLoader,
   } from '$lib/stores/ui.js';
   import { onMount } from 'svelte';
   import ScrollTop from '$lib/components/ScrollTop.svelte';
   import { navigating } from '$app/stores';
+  import Loader from '$lib/components/Loader.svelte';
 
   export let data;
   //console.log(data);
@@ -48,6 +50,9 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <main class="w-100 h-100 flex-1" on:click={handleMainElClick}>
+  {#if $showLoader}
+    <Loader />
+  {/if}
   <slot />
   {#if scrollY > 200}
     <ScrollTop />

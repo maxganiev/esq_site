@@ -25,8 +25,8 @@
       Ключевой ассортимент
     </h2>
     {#each $categories as category (category.id)}
-      <!--Комплектные трансформаторные подстанции-->
-      {#if category.id === 1}
+      <!--Коммутационное оборудование-->
+      {#if category.id === 5}
         <div
           class="category-col {minHeightCellClass} pos-r"
           style="grid-column: 1/3">
@@ -52,7 +52,7 @@
       {:else if category.id === 13}
         <div
           class="category-col {minHeightCellClass} pos-r center center/cover;"
-          style="grid-column: {$isMobile ? '2/3' : '2/4'}">
+          style="grid-column: {$isMobile ? '1/3' : '3/5'}">
           <a
             href="category{category.href}"
             class="d-block w-100 h-100 rounded-3 category-link-hover"

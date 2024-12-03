@@ -34,13 +34,14 @@ export const daysToCallback = readable([], (set) => {
           mins = hIsDecimal ? '00' : '30';
 
         time.value = `${hRounded}:${mins}`;
-        time.disabled =
+
+        const disabled =
           dayToCallbackVal.getDate() <= now.getDate() &&
           (Number(hRounded) < now.getHours() ||
             (Number(hRounded) === now.getHours() &&
               Number(mins) < now.getMinutes()));
 
-        hours.push(time);
+        if (!disabled) hours.push(time);
       }
 
       set(hours);

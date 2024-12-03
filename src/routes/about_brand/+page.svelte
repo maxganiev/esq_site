@@ -32,22 +32,27 @@
 
   const customContent = {
     0: {
+      lgNum: 10,
+      lgPhrase: 'млрд рублей',
+      smPhrase: ' продаж за 2024',
+    },
+    1: {
       lgNum: 25,
       lgPhrase: 'лет',
       smPhrase:
         'разрабатываем, производим и поставляем энерогоэффективное оборудование',
     },
-    1: {
+    2: {
       lgNum: 250000,
       lgPhrase: '',
       smPhrase: 'клиентов используют оборудование ESQ',
     },
-    2: {
+    3: {
       lgNum: 25,
       lgPhrase: 'филиалов',
       smPhrase: 'в России, Казахстане, Кыргызстане и Узбекистане',
     },
-    3: {
+    4: {
       lgNum: 12,
       lgPhrase: 'направлений',
       smPhrase: 'продукции для любых задач предприятия',
@@ -191,19 +196,21 @@
 
   <div class="bg-clr-white-gray h-30-vh">
     <GutterMain classList={['row']}>
-      {#each Object.keys(customContent) as key}
-        <div class="col-sm-6 col-md-3">
-          <span class="clr-cyan fw-semi-bold {fontSizeLg} text-nowrap">
-            {new Intl.NumberFormat('ru-RU').format(
-              counterVals[key].counter.startValue.toFixed(0),
-            ) + (key !== '1' ? '' : '+')}
-            {customContent[key].lgPhrase}
-          </span>
-          <p class="mt-2 {fontSizeSm} clr-green-dark mb-2-rem">
-            {customContent[key].smPhrase}
-          </p>
-        </div>
-      {/each}
+      <div class="counter-fields-wrapper">
+        {#each Object.keys(customContent) as key}
+          <div>
+            <span class="clr-cyan fw-semi-bold {fontSizeLg} text-nowrap">
+              {new Intl.NumberFormat('ru-RU').format(
+                counterVals[key].counter.startValue.toFixed(0),
+              ) + (key !== '1' ? '' : '+')}
+              {customContent[key].lgPhrase}
+            </span>
+            <p class="mt-2 {fontSizeSm} clr-green-dark mb-2-rem">
+              {customContent[key].smPhrase}
+            </p>
+          </div>
+        {/each}
+      </div>
     </GutterMain>
   </div>
 
@@ -220,3 +227,17 @@
     </div>
   </GutterY>
 </div>
+
+<style lang="scss" scoped>
+  .counter-fields-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 1rem;
+    row-gap: 1.5rem;
+  }
+  @media (min-width: 150px) and (max-width: 850px) {
+    .counter-fields-wrapper {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+</style>

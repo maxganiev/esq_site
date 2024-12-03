@@ -6,7 +6,7 @@
     selectedDayToCallback,
     phoneMasks,
   } from '$lib/stores/selectFormData';
-  import { Debounce } from '$lib/utils/debounce';
+
   import Autocomplete from './Autocomplete.svelte';
   import { isMobile } from '$lib/stores/ui';
   import { branches } from '$lib/stores/categories';
@@ -18,29 +18,45 @@
 
   const input = {
       name: '',
-      phone: 0,
-      city: '-',
+      email: '',
+      city: '',
       callbackDate: $selectedDayToCallback.value,
-      callbackTime:
-        $timesToCallback.find((time) => !time.disabled)?.value || '-',
+      callbackTime: $timesToCallback[0].value,
       message: '',
     },
-    debounce = new Debounce();
+    phoneMaskedInput = {
+      visibleValue: null,
+      maskedValue: null,
+    };
 
   function bindPhone({ detail }) {
-    input.phone = detail.inputState.maskedValue;
-    console.log(detail);
+    phoneMaskedInput.visibleValue = detail.inputState.visibleValue;
+    phoneMaskedInput.maskedValue = detail.inputState.maskedValue;
   }
 
   $: countryIdx = 'RU';
   $: currentCountry = $phoneMasks[countryIdx];
 
-  $: formIsNotValid = Object.values(input).some(
-    (val) =>
-      !val ||
-      (typeof val === 'string' && val.length < 1) ||
-      (typeof val === 'number' && val < 1),
-  );
+  $: formIsNotValid = () => {
+    const passedByLength =
+      input.name.length &&
+      input.city.length &&
+      input.callbackDate.length &&
+      input.callbackTime.length &&
+      input.message.length;
+
+    const passedByCompare =
+      phoneMaskedInput.maskedValue &&
+      phoneMaskedInput.visibleValue &&
+      phoneMaskedInput.maskedValue.length ===
+        phoneMaskedInput.visibleValue.length;
+
+    const passedByRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+      input.email,
+    );
+
+    return !passedByLength || !passedByCompare || !passedByRegex;
+  };
 
   let disableSubmit = false;
 
@@ -61,6 +77,14 @@
       selectedDayToCallback.update((val) => (val = JSON.parse(daySelected)));
   }
 
+  function selectCity(e) {
+    input.city = e.detail;
+  }
+
+  function resetInput() {
+    input.message = '';
+  }
+
   $: rowWrapperClass = $isMobile ? 'd-block' : 'd-flex flex-column-gap-1';
   $: labelWidthClass = $isMobile ? 'w-100 pb-2' : 'w-20';
   $: inputWidthClass = $isMobile ? 'w-100' : 'w-80';
@@ -70,11 +94,18 @@
 </script>
 
 <form
+  autocomplete="off"
   {...$$restProps}
   on:submit={(e) => {
     e.preventDefault();
-    onSubmit.apply(null, [{ input, formIsNotValid }]);
+    onSubmit.apply(null, [
+      {
+        input: { ...input, phone: phoneMaskedInput.visibleValue },
+        formIsNotValid,
+      },
+    ]);
     disableSubmit = true;
+    resetInput();
   }}>
   <div class={rowWrapperClass}>
     <div class={labelWidthClass}>
@@ -117,6 +148,21 @@
 
   <div class={rowWrapperClass}>
     <div class={labelWidthClass}>
+      <label class="{fontSizeClass} clr-white" for="name">
+        Электронная почта
+      </label>
+    </div>
+    <div class={inputWidthClass}>
+      <input
+        type="text"
+        class="form-control {fontSizeClass} w-100"
+        autocomplete="-"
+        bind:value={input.email} />
+    </div>
+  </div>
+
+  <div class={rowWrapperClass}>
+    <div class={labelWidthClass}>
       <label class="{fontSizeClass} clr-white" for="city">
         Город обслуживания
       </label>
@@ -128,7 +174,8 @@
           ...$branches.map((branch) => branch),
         ].sort((a, b) => (a.config_name < b.config_name ? -1 : 1))}
         itemKey={'config_name'}
-        class="{fontSizeClass} w-100 form-control no-scrollbars" />
+        class="{fontSizeClass} w-100 form-control no-scrollbars"
+        on:select={selectCity} />
     </div>
   </div>
 
@@ -158,7 +205,7 @@
             <option value="-">-</option>
           {/if}
           {#each $timesToCallback as time}
-            <option value={time.value} disabled={time.disabled}>
+            <option value={time.value}>
               {time.value}
             </option>
           {/each}
@@ -190,7 +237,7 @@
         <label class="form-check-label" for="">
           <span class="clr-white {fontSizeClass}">
             Согласен с <a
-              href="/"
+              href="https://www.elcomspb.ru/agrements/?type=agree"
               target="_blank"
               style="text-decoration: underline !important;">
               условиями передачи данных
@@ -205,7 +252,7 @@
           ? 'w-100 fs-label-lg'
           : 'w-50 fs-body-lg'} fw-semi-bold py-2 rounded-pill"
         value="Отправить"
-        disabled={formIsNotValid || !conditionsAccepted} />
+        disabled={formIsNotValid() || !conditionsAccepted} />
     </div>
   </div>
 </form>

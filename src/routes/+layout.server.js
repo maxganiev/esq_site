@@ -2,7 +2,10 @@ import { prisma } from '$lib/prisma';
 
 export const load = async ({}) => {
   const [rootCategories, branches] = await prisma.$transaction([
-    prisma.category.findMany({ where: { parent_id: -1 } }),
+    prisma.category.findMany({
+      where: { parent_id: -1 },
+      orderBy: { sort_order: 'asc' },
+    }),
     prisma.branch.findMany({
       orderBy: { store_id: 'asc' },
     }),

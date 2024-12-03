@@ -3,24 +3,70 @@
   import Form from '$lib/components/Form.svelte';
   import GutterMain from '$lib/components/gutters/GutterMain.svelte';
   import { globals } from '$lib/globals';
-  import { isMobile } from '$lib/stores/ui';
+  import { isMobile, showLoader } from '$lib/stores/ui';
   import { alert } from '$lib/utils/alert';
 
   let _alert = { ...alert },
     submitTimeout = _alert.timeout;
 
   /**
-   * @param {{ formIsNotValid: Boolean; }} formData
+   * @param {{input:{name: String, phone: String, email: String, city: String, callbackDate: String, callbackTime: String, message: String}, formIsNotValid: Function; }} formData
    */
   async function onSubmit(formData) {
-    if (formData.formIsNotValid) {
-      _alert.set('Заполните форму', 2);
-      _alert = _alert;
+    if (formData.formIsNotValid()) return;
 
-      setTimeout(() => {
-        _alert = _alert;
-      }, _alert.timeout);
+    const { input } = formData;
+
+    const fd = new FormData(),
+      payload = {
+        name: input.name,
+        phone: input.phone,
+        mail: input.email,
+        office: input.city,
+        comment: `Перезвонить ${input.callbackDate} в ${input.callbackTime}`,
+        requests: input.message,
+      };
+
+    fd.append('payload', JSON.stringify(payload));
+
+    $showLoader = true;
+
+    try {
+      const origin = window.location.origin.includes('localhost')
+        ? 'http://localhost'
+        : 'https://portal.elcomspb.ru';
+      const req = await fetch(origin + '/api/requests-site', {
+        method: 'POST',
+        body: fd,
+        headers: {
+          origin,
+        },
+      });
+
+      const res = await req.json();
+
+      if (res.success) {
+        _alert.show = true;
+        _alert.type = 'success';
+        _alert.msg = 'Ваше обращение зарегистрировано, спасибо';
+      } else {
+        _alert.show = true;
+        _alert.type = 'danger';
+        _alert.msg = 'Сбой отправки, повторите попытку позже.';
+      }
+    } catch (error) {
+      console.log(error);
+
+      _alert.show = true;
+      _alert.type = 'danger';
+      _alert.msg = 'Сбой отправки, повторите попытку позже.';
     }
+
+    $showLoader = false;
+
+    setTimeout(() => {
+      _alert.show = false;
+    }, 6000);
   }
 </script>
 

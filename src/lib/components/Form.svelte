@@ -21,7 +21,7 @@
       email: '',
       city: '',
       callbackDate: $selectedDayToCallback.value,
-      callbackTime: $timesToCallback[0].value,
+      callbackTime: $timesToCallback[0]?.value || '-',
       message: '',
     },
     phoneMaskedInput = {
